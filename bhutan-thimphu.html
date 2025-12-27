@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thimphu Cultural Corridor | Silkim Tourism</title>
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="journey-detail.css" />
+</head>
+
+<body>
+
+<header class="header">
+    <a href="index.html" class="logo">SILKIM</a>
+
+  <div class="menu-toggle" id="menuToggle">☰</div>
+
+  <nav id="mainNav">
+    <a href="index.html">Home</a>
+    <a href="journeys.html">Journeys</a>
+    <a href="bhutan-detail.html">Bhutan Journey</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main>
+
+<section class="journey-hero image-hero bhutan thimphu">
+  <div class="hero-overlay"></div>
+  <div class="container">
+    <h1 class="animate">Thimphu Cultural Corridor</h1>
+    <p class="animate">Living traditions in Bhutan’s capital valley.</p>
+  </div>
+</section>
+
+<section class="section overview">
+  <div class="container two-col">
+
+    <div class="meta animate">
+      <p><strong>Duration</strong><span>3 days</span></p>
+      <p><strong>Max Altitude</strong><span>2,700 m</span></p>
+      <p><strong>Season</strong><span>All year</span></p>
+      <p><strong>Difficulty</strong><span>Easy</span></p>
+    </div>
+
+    <div class="description animate">
+      <h2>Overview</h2>
+      <p>
+        This route explores Thimphu’s monasteries, markets, and institutions,
+        offering insight into Bhutan’s governance, religion, and daily life.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="section itinerary">
+  <div class="container">
+    <h2 class="animate">Basic Itinerary</h2>
+
+    <div class="itinerary-item animate">
+      <div class="day-label">Day 1</div>
+      <div class="day-content">
+        <h3>Arrival & City Exploration</h3>
+        <p>Visit Memorial Chorten, Buddha Dordenma, and local markets.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section contact-cta">
+  <div class="container">
+    <h2 class="animate">Detailed Itinerary & Budget</h2>
+    <p class="animate">Can be combined with Paro or Punakha routes.</p>
+    <a href="contact.html" class="cta-button">Contact Us</a>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">© 2025 Silkim Tourism</footer>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in-view');
+      observer.unobserve(entry.target);
+    }
+  });
+},{ threshold: 0.15 });
+
+document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+</script>
+<script>
+  const observer = new IntersectionObserver( ... );
+</script>
+<script>
+  const toggle = document.getElementById("menuToggle");
+  const nav = document.getElementById("mainNav");
+
+  toggle.addEventListener("click", () => {
+    nav.classList.toggle("active");
+  });
+</script>
+</body>
+</html>

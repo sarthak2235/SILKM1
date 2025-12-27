@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bhutan Interior | Silkim Tourism</title>
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="journey-detail.css" />
+</head>
+
+<body>
+
+<header class="header">
+    <a href="index.html" class="logo">SILKIM</a>
+
+  <div class="menu-toggle" id="menuToggle">☰</div>
+
+  <nav id="mainNav">
+    <a href="index.html">Home</a>
+    <a href="journeys.html">Journeys</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="journey-hero image-hero bhutan">
+    <div class="hero-overlay"></div>
+    <div class="container">
+      <h1 class="animate">Bhutan Interior</h1>
+      <p class="animate">
+        Slow travel through Bhutan’s interior valleys and monasteries.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- OVERVIEW -->
+  <section class="section overview">
+    <div class="container two-col">
+
+     <div class="meta animate">
+        <p><strong>Duration</strong><span>10–14 days</span></p>
+        <p><strong>Max Altitude</strong><span>4,500 m</span></p>
+        <p><strong>Season</strong><span>Mar–May · Sep–Nov</span></p>
+        <p><strong>Difficulty</strong><span>Moderate</span></p>
+      </div>
+
+      <div class="description animate">
+        <h2>Overview</h2>
+        <p>
+          This journey explores Bhutan beyond its main corridors, focusing on
+          interior valleys, sacred monasteries, and community-based travel.
+          Routes emphasize cultural continuity, gradual elevation gain, and
+          minimal environmental impact.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SUB JOURNEYS -->
+  <section class="section sub-journeys">
+    <div class="container">
+      <h2>Routes Within This Journey</h2>
+
+      <div class="sub-grid">
+
+        <a href="bhutan-paro.html" class="sub-card bhutan paro animate">
+          <h3>Paro–Taktsang Circuit</h3>
+          <span>3 days · Sacred monasteries</span>
+        </a>
+
+        <a href="bhutan-thimphu.html" class="sub-card bhutan thimphu animate">
+          <h3>Thimphu Cultural Corridor</h3>
+          <span>3 days · Living traditions</span>
+        </a>
+
+        <a href="bhutan-bumthang.html" class="sub-card bhutan bumthang animate">
+          <h3>Bumthang Valley Route</h3>
+          <span>5 days · Spiritual heartland</span>
+        </a>
+
+        <a href="bhutan-phobjikha.html" class="sub-card bhutan phobjikha animate">
+          <h3>Phobjikha Glacial Valley</h3>
+          <span>3 days · Wetlands & cranes</span>
+        </a>
+
+        <a href="bhutan-eastern.html" class="sub-card bhutan eastern animate">
+          <h3>Eastern Bhutan Traverse</h3>
+          <span>6 days · Remote provinces</span>
+        </a>
+
+        <a href="bhutan-acclimatization.html" class="sub-card bhutan acclimatization animate">
+          <h3>Slow Travel Acclimatization Loop</h3>
+          <span>3 days · Gradual ascent</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  © 2025 Silkim Tourism
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+
+  document.querySelectorAll('.animate').forEach(el => {
+    observer.observe(el);
+  });
+</script>
+<script>
+  const observer = new IntersectionObserver( … );
+</script>
+
+<script>
+  const toggle = document.getElementById("menuToggle");
+  const nav = document.getElementById("mainNav");
+
+  toggle.addEventListener("click", () => {
+    nav.classList.toggle("active");
+  });
+</script>
+
+</body>
+</html>

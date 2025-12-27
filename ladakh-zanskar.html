@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zanskar Link Route | Silkim Tourism</title>
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="journey-detail.css" />
+</head>
+
+<body>
+
+    <header class="header">
+        <a href="index.html" class="logo">SILKIM</a>
+
+      <div class="menu-toggle" id="menuToggle">☰</div>
+
+      <nav id="mainNav">
+        <a href="index.html">Home</a>
+        <a href="journeys.html">Journeys</a>
+        <a href="ladakh-detail.html">Ladakh Traverse</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
+
+<main>
+
+<section class="journey-hero image-hero ladakh zanskar">
+  <div class="hero-overlay"></div>
+  <div class="container">
+    <h1 class="animate">Zanskar Link Route</h1>
+    <p class="animate">
+      Remote valleys, dramatic gorges, and isolated Himalayan settlements.
+    </p>
+  </div>
+</section>
+
+<section class="section overview">
+  <div class="container two-col">
+
+    <div class="meta animate">
+      <p><strong>Duration</strong><span>7 days</span></p>
+      <p><strong>Max Altitude</strong><span>4,900 m</span></p>
+      <p><strong>Season</strong><span>July – September</span></p>
+      <p><strong>Difficulty</strong><span>Challenging</span></p>
+    </div>
+
+    <div class="description animate">
+      <h2>Overview</h2>
+      <p>
+        The Zanskar Link Route connects Ladakh with the rugged Zanskar region,
+        known for deep gorges, river valleys, and cultural isolation shaped
+        by geography.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="section itinerary">
+  <div class="container">
+    <h2 class="animate">Basic Itinerary</h2>
+
+    <div class="itinerary-list">
+
+      <div class="itinerary-item animate">
+        <div class="day-label">Day 1</div>
+        <div class="day-content">
+          <h3>Leh → Western Ladakh</h3>
+          <p>
+            Drive toward western valleys with gradual elevation changes.
+          </p>
+        </div>
+      </div>
+
+      <div class="itinerary-item animate">
+        <div class="day-label">Day 2</div>
+        <div class="day-content">
+          <h3>High Pass Crossing</h3>
+          <p>
+            Cross a major pass linking Ladakh and Zanskar regions.
+          </p>
+        </div>
+      </div>
+
+      <div class="itinerary-item animate">
+        <div class="day-label">Day 3</div>
+        <div class="day-content">
+          <h3>Zanskar Valley Exploration</h3>
+          <p>
+            Visit villages and monasteries along the valley floor.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section contact-cta">
+  <div class="container">
+    <h2 class="animate">Detailed Itinerary & Budget</h2>
+    <p class="animate">
+      This route is weather-sensitive. Contact us for timing and logistics.
+    </p>
+    <a href="contact.html" class="cta-button">Contact Us</a>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">© 2025 Silkim Tourism</footer>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in-view');
+      observer.unobserve(entry.target);
+    }
+  });
+},{ threshold: 0.15 });
+
+document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+</script>
+<script>
+  const observer = new IntersectionObserver( ... );
+</script>
+<script>
+  const toggle = document.getElementById("menuToggle");
+  const nav = document.getElementById("mainNav");
+
+  toggle.addEventListener("click", () => {
+    nav.classList.toggle("active");
+  });
+</script>
+</body>
+</html>

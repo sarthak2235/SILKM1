@@ -1,0 +1,576 @@
+/* =======================
+   CONTAINER
+   ======================= */
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* =======================
+   HERO
+   ======================= */
+
+.journey-hero {
+  text-align: center;
+}
+
+.image-hero {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  padding-top: 220px;
+  padding-bottom: 160px;
+}
+
+/* -------- HERO IMAGES -------- */
+
+.image-hero.ladakh {
+  background-image: url("images/ladakh.jpg");
+}
+
+.image-hero.sikkim {
+  background-image: url("images/sikkim.jpg");
+}
+
+.image-hero.bhutan {
+  background-image: url("images/bhutan.jpg");
+}
+
+/* -------- HERO OVERLAY -------- */
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+}
+
+.image-hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* =======================
+   SECTIONS
+   ======================= */
+
+.section {
+  padding: 120px 0;
+}
+
+/* =======================
+   OVERVIEW
+   ======================= */
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 80px;
+}
+
+.meta p {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+/* =======================
+   SUB JOURNEYS
+   ======================= */
+
+.sub-journeys h2 {
+  margin-bottom: 40px;
+}
+
+.sub-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.sub-card {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  padding: 24px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+  text-decoration: none;
+  color: inherit;
+
+  background: rgba(0,0,0,0.25);
+  transition: transform 0.35s ease, border-color 0.35s ease;
+}
+
+.sub-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent);
+}
+
+.sub-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.35;
+}
+
+/* =======================
+   LADAKH SUB ROUTES (6)
+   ======================= */
+
+.sub-card.ladakh.nubra::before {
+  background-image: url("images/ladakh.jpg");
+}
+
+.sub-card.ladakh.hanle::before {
+  background-image: url("images/sikkim.jpg");
+}
+
+.sub-card.ladakh.zanskar::before {
+  background-image: url("images/bhutan.jpg");
+}
+
+.sub-card.ladakh.changthang::before {
+  background-image: url("images/ladakh.jpg");
+}
+
+.sub-card.ladakh.monastery::before {
+  background-image: url("images/ladakh.jpg");
+}
+
+.sub-card.ladakh.acclimatization::before {
+  background-image: url("images/ladakh.jpg");
+}
+
+/* =======================
+   SIKKIM SUB ROUTES (6)
+   ======================= */
+
+.sub-card.sikkim.rumtek::before {
+  background-image: url("images/sikkim.jpg");
+}
+
+.sub-card.sikkim.yuksom::before {
+  background-image: url("images/sikkim.jpg");
+}
+
+.sub-card.sikkim.lachung::before {
+  background-image: url("images/sikkim.jpg");
+}
+
+.sub-card.sikkim.lachen::before {
+  background-image: url("images/sikkim.jpg");
+}
+
+.sub-card.sikkim.dzongu::before {
+  background-image: url("images/sikkim.jpg");
+}
+
+.sub-card.sikkim.acclimatization::before {
+  background-image: url("images/sikkim.jpg");
+}
+
+/* =======================
+   BHUTAN SUB ROUTES (6)
+   ======================= */
+
+.sub-card.bhutan.paro::before {
+  background-image: url("images/bhutan.jpg");
+}
+
+.sub-card.bhutan.thimphu::before {
+  background-image: url("images/bhutan.jpg");
+}
+
+.sub-card.bhutan.bumthang::before {
+  background-image: url("images/bhutan.jpg");
+}
+
+.sub-card.bhutan.phobjikha::before {
+  background-image: url("images/bhutan.jpg");
+}
+
+.sub-card.bhutan.eastern::before {
+  background-image: url("images/bhutan.jpg");
+}
+
+.sub-card.bhutan.acclimatization::before {
+  background-image: url("images/bhutan.jpg");
+}
+
+
+
+/* =======================
+   SIKKIM ROUTE HERO IMAGES
+   ======================= */
+
+.image-hero.sikkim.rumtek {
+  background-image: url("images/sikkim.jpg");
+}
+
+.image-hero.sikkim.yuksom {
+  background-image: url("images/sikkim.jpg");
+}
+
+.image-hero.sikkim.lachung {
+  background-image: url("images/sikkim.jpg");
+}
+
+.image-hero.sikkim.lachen {
+  background-image: url("images/sikkim.jpg");
+}
+
+.image-hero.sikkim.dzongu {
+  background-image: url("images/sikkim.jpg");
+}
+
+.image-hero.sikkim.acclimatization {
+  background-image: url("images/sikkim.jpg");
+}
+
+
+
+/* =======================
+   LADAKH ROUTE HERO IMAGES
+   ======================= */
+
+.image-hero.ladakh.nubra {
+  background-image: url("images/ladakh.jpg");
+}
+
+.image-hero.ladakh.hanle {
+  background-image: url("images/ladakh.jpg");
+}
+
+.image-hero.ladakh.zanskar {
+  background-image: url("images/ladakh.jpg");
+}
+
+.image-hero.ladakh.changthang {
+  background-image: url("images/ladakh.jpg");
+}
+
+.image-hero.ladakh.monastery {
+  background-image: url("images/ladakh.jpg");
+}
+
+.image-hero.ladakh.acclimatization {
+  background-image: url("images/ladakh.jpg");
+}
+
+
+
+/* =======================
+   BHUTAN ROUTE HERO IMAGES
+   ======================= */
+
+.image-hero.bhutan.paro {
+  background-image: url("images/bhutan.jpg");
+}
+
+.image-hero.bhutan.thimphu {
+  background-image: url("images/bhutan.jpg");
+}
+
+.image-hero.bhutan.bumthang {
+  background-image: url("images/bhutan.jpg");
+}
+
+.image-hero.bhutan.phobjikha {
+  background-image: url("images/bhutan.jpg");
+}
+
+.image-hero.bhutan.eastern {
+  background-image: url("images/bhutan.jpg");
+}
+
+.image-hero.bhutan.acclimatization {
+  background-image: url("images/bhutan.jpg");
+}
+
+/* =======================
+   TEXT
+   ======================= */
+
+.sub-card h3,
+.sub-card span {
+  position: relative;
+  z-index: 1;
+}
+
+.sub-card span {
+  color: var(--muted);
+}
+
+/* =======================
+   FOOTER
+   ======================= */
+
+.footer {
+  padding: 40px 0;
+  text-align: center;
+  color: var(--muted);
+}
+
+/* =======================
+   RESPONSIVE
+   ======================= */
+
+@media (max-width: 900px) {
+  .sub-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .two-col {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+
+/* =======================
+   ITINERARY
+   ======================= */
+
+.itinerary h2 {
+  margin-bottom: 48px;
+}
+
+.itinerary-list {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.itinerary-item {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 32px;
+  padding-left: 16px;
+  border-left: 2px solid rgba(255,255,255,0.08);
+}
+
+.day-label {
+  font-size: 0.9rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding-top: 4px;
+}
+
+.day-content h3 {
+  font-size: 1.15rem;
+  margin-bottom: 8px;
+}
+
+.day-content p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* =======================
+   CONTACT CTA
+   ======================= */
+
+.contact-cta {
+  text-align: center;
+  padding-top: 100px;
+  padding-bottom: 140px;
+}
+
+.contact-cta h2 {
+  margin-bottom: 16px;
+}
+
+.contact-cta p {
+  max-width: 640px;
+  margin: 0 auto 36px;
+  color: var(--muted);
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 14px 36px;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.cta-button:hover {
+  background: var(--accent);
+  color: #000;
+}
+
+
+/* =======================
+   PAGE LOAD / SCROLL ANIMATION
+   Same behavior as index.html
+   ======================= */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* default hidden state */
+.animate {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+/* when visible */
+.animate.in-view {
+  animation: fadeUp 0.9s ease forwards;
+}
+
+/* hero stagger */
+.journey-hero h1.in-view {
+  animation-delay: 0.15s;
+}
+
+.journey-hero p.in-view {
+  animation-delay: 0.35s;
+}
+
+/* cards faster */
+.sub-card.in-view {
+  animation: fadeUp 0.65s ease forwards;
+}
+
+
+/* =====================================================
+   MOBILE REFINEMENTS (PHONES)
+   ===================================================== */
+
+@media (max-width: 768px) {
+
+  /* HERO */
+  .hero {
+    height: auto;
+    min-height: 70vh;
+    padding-top: 100px;
+    padding-bottom: 60px;
+  }
+
+  .hero h1 {
+    font-size: 2.1rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  /* CONTENT SECTIONS */
+  .philosophy-content,
+  .contact-section {
+    padding: 100px 20px;
+  }
+
+  /* READING PANELS */
+  .container.narrow,
+  .contact-panel {
+    max-width: 100%;
+    padding: 40px 24px;
+    border-left: none;
+    background: rgba(0,0,0,0.45);
+  }
+
+  /* PARAGRAPHS */
+  .philosophy-content p,
+  .contact-info p {
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+
+  /* CONTACT GRID */
+  .contact-panel {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  /* SOCIAL LINKS */
+  .contact-social {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* FORM */
+  .contact-form label {
+    font-size: 0.85rem;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 0.95rem;
+    padding: 10px 12px;
+  }
+
+  .contact-form button {
+    width: 100%;
+    padding: 14px 0;
+  }
+}
+
+/* =====================================================
+   MOBILE HEADER FIX
+   ===================================================== */
+
+.menu-toggle {
+  display: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+  color: var(--fg);
+}
+
+@media (max-width: 768px) {
+
+  .header {
+    padding: 16px 24px;
+  }
+
+  .header nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+
+    background: rgba(14, 20, 24, 0.98);
+    backdrop-filter: blur(10px);
+
+    display: none;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .header nav a {
+    margin: 0;
+    padding: 16px 0;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    font-size: 1rem;
+  }
+
+  .header nav.active {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}

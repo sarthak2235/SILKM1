@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sikkim Monastery Route | Silkim Tourism</title>
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="journey-detail.css" />
+</head>
+
+<body>
+
+<header class="header">
+    <a href="index.html" class="logo">SILKIM</a>
+
+  <div class="menu-toggle" id="menuToggle">☰</div>
+
+  <nav id="mainNav">
+    <a href="index.html">Home</a>
+    <a href="journeys.html">Journeys</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+
+<main>
+
+  <!-- HERO -->
+  <section class="journey-hero image-hero sikkim">
+    <div class="hero-overlay"></div>
+    <div class="container">
+      <h1 class="animate">Sikkim Monastery Route</h1>
+      <p class="animate">
+        Slow journeys through monastic landscapes and alpine valleys.
+      </p>
+    </div>
+  </section>
+
+  <!-- OVERVIEW -->
+  <section class="section overview">
+    <div class="container two-col">
+
+        <div class="meta animate">
+        <p><strong>Duration</strong><span>8–12 days</span></p>
+        <p><strong>Max Altitude</strong><span>4,200 m</span></p>
+        <p><strong>Season</strong><span>Mar–Jun · Sep–Nov</span></p>
+        <p><strong>Difficulty</strong><span>Moderate</span></p>
+      </div>
+
+        <div class="description animate">
+        <h2>Overview</h2>
+        <p>
+          This journey focuses on Sikkim’s monasteries, cultural corridors,
+          and high-altitude valleys. Routes are designed for slow travel
+          and adaptive acclimatization.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SUB JOURNEYS -->
+  <section class="section sub-journeys">
+    <div class="container">
+      <h2>Routes Within This Journey</h2>
+
+      <div class="sub-grid">
+
+        <a href="sikkim-rumtek.html" class="sub-card sikkim rumtek animate">
+          <h3>Rumtek–Pemayangtse Circuit</h3>
+          <span>4 days · Monastic heritage</span>
+        </a>
+
+        <a href="sikkim-yuksom.html" class="sub-card sikkim yuksom animate">
+          <h3>Yuksom Historical Trail</h3>
+          <span>3 days · Cultural immersion</span>
+        </a>
+
+        <a href="sikkim-lachung.html" class="sub-card sikkim lachung animate">
+          <h3>Lachung & Yumthang Valley</h3>
+          <span>4 days · Alpine landscapes</span>
+        </a>
+
+        <a href="sikkim-lachen.html" class="sub-card sikkim lachen animate">
+          <h3>Lachen–Gurudongmar Route</h3>
+          <span>5 days · Sacred lakes</span>
+        </a>
+
+        <a href="sikkim-dzongu.html" class="sub-card sikkim dzongu animate">
+          <h3>Dzongu Lepcha Reserve</h3>
+          <span>4 days · Indigenous regions</span>
+        </a>
+
+        <a href="sikkim-acclimatization.html" class="sub-card sikkim acclimatization animate">
+          <h3>Altitude Acclimatization Loop</h3>
+          <span>3 days · Slow ascent</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  © 2025 Silkim Tourism
+</footer>
+<script>
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+
+  document.querySelectorAll('.animate').forEach(el => {
+    observer.observe(el);
+  });
+</script>
+<script>
+  const observer = new IntersectionObserver( ... );
+</script>
+<script>
+  const toggle = document.getElementById("menuToggle");
+  const nav = document.getElementById("mainNav");
+
+  toggle.addEventListener("click", () => {
+    nav.classList.toggle("active");
+  });
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>High Pass Acclimatization Loop | Silkim Tourism</title>
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="journey-detail.css" />
+</head>
+
+<body>
+
+<header class="header">
+    <a href="index.html" class="logo">SILKIM</a>
+
+  <div class="menu-toggle" id="menuToggle">☰</div>
+
+  <nav id="mainNav">
+    <a href="index.html">Home</a>
+    <a href="journeys.html">Journeys</a>
+    <a href="ladakh-detail.html">Ladakh Traverse</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+
+<main>
+    <section class="journey-hero image-hero ladakh acclimatization">
+      <div class="hero-overlay"></div>
+      <div class="container">
+      <h1 class="animate">High Pass Acclimatization Loop</h1>
+      <p class="animate">Controlled altitude exposure before major expeditions.</p>
+      </div>
+    </section>
+
+    <section class="section overview">
+      <div class="container two-col">
+
+          <div class="meta animate">
+          <p><strong>Duration</strong><span>4 days</span></p>
+          <p><strong>Max Altitude</strong><span>5,100 m</span></p>
+          <p><strong>Season</strong><span>June – September</span></p>
+          <p><strong>Difficulty</strong><span>Moderate</span></p>
+        </div>
+
+          <div class="description animate">
+          <h2>Overview</h2>
+          <p>
+            Designed to prepare travelers for high altitude, this loop includes
+            progressive elevation gain across multiple passes.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section itinerary">
+      <div class="container">
+          <h2 class="animate">Basic Itinerary</h2>
+
+        <div class="itinerary-list">
+           <div class="itinerary-item animate">
+            <div class="day-label">Day 1</div>
+            <div class="day-content">
+              <h3>Leh → High Pass Region</h3>
+              <p>
+                Begin gradual ascent with emphasis on rest and hydration.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact-cta">
+      <div class="container">
+        <h2 class="animate">Detailed Itinerary & Budget</h2>
+        <p class="animate">Recommended before longer Himalayan routes.</p>
+        <a href="contact.html" class="cta-button">Contact Us</a>
+      </div>
+    </section>
+
+
+</main>
+
+<footer class="footer">© 2025 Silkim Tourism</footer>
+
+<script>
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+
+  document.querySelectorAll('.animate').forEach(el => {
+    observer.observe(el);
+  });
+</script>
+<script>
+  const observer = new IntersectionObserver( ... );
+</script>
+<script>
+  const toggle = document.getElementById("menuToggle");
+  const nav = document.getElementById("mainNav");
+
+  toggle.addEventListener("click", () => {
+    nav.classList.toggle("active");
+  });
+</script>
+
+</body>
+</html>
+

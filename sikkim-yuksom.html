@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yuksom Heritage Route | Silkim Tourism</title>
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="journey-detail.css" />
+</head>
+
+<body>
+
+<header class="header">
+    <a href="index.html" class="logo">SILKIM</a>
+
+  <div class="menu-toggle" id="menuToggle">☰</div>
+
+  <nav id="mainNav">
+    <a href="index.html">Home</a>
+    <a href="journeys.html">Journeys</a>
+    <a href="sikkim-detail.html">Sikkim Journey</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main>
+
+<section class="journey-hero image-hero sikkim yuksom">
+  <div class="hero-overlay"></div>
+  <div class="container">
+    <h1 class="animate">Yuksom Heritage Route</h1>
+    <p class="animate">Sacred trails and the historic heart of Sikkim.</p>
+  </div>
+</section>
+
+<section class="section overview">
+  <div class="container two-col">
+
+    <div class="meta animate">
+      <p><strong>Duration</strong><span>2 days</span></p>
+      <p><strong>Max Altitude</strong><span>2,000 m</span></p>
+      <p><strong>Season</strong><span>Mar – May · Sep – Nov</span></p>
+      <p><strong>Difficulty</strong><span>Easy</span></p>
+    </div>
+
+    <div class="description animate">
+      <h2>Overview</h2>
+      <p>
+        Yuksom was the first capital of Sikkim and the starting point for
+        historic trade and pilgrimage routes.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="section itinerary">
+  <div class="container">
+    <h2 class="animate">Basic Itinerary</h2>
+
+    <div class="itinerary-item animate">
+      <div class="day-label">Day 1</div>
+      <div class="day-content">
+        <h3>Gangtok → Yuksom</h3>
+        <p>Visit Norbugang Chorten and sacred sites.</p>
+      </div>
+    </div>
+
+    <div class="itinerary-item animate">
+      <div class="day-label">Day 2</div>
+      <div class="day-content">
+        <h3>Heritage Walks</h3>
+        <p>Explore monasteries and forest trails.</p>
+      </div>
+    </div>
+
+  </section>
+
+<section class="section contact-cta">
+  <div class="container">
+    <h2 class="animate">Detailed Itinerary & Budget</h2>
+    <p class="animate">Ideal for cultural immersion.</p>
+    <a href="contact.html" class="cta-button">Contact Us</a>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">© 2025 Silkim Tourism</footer>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in-view');
+      observer.unobserve(e.target);
+    }
+  });
+},{ threshold: 0.15 });
+
+document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+</script>
+<script>
+  const observer = new IntersectionObserver( ... );
+</script>
+<script>
+  const toggle = document.getElementById("menuToggle");
+  const nav = document.getElementById("mainNav");
+
+  toggle.addEventListener("click", () => {
+    nav.classList.toggle("active");
+  });
+</script>
+</body>
+</html>

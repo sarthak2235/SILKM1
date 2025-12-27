@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bumthang Spiritual Valley | Silkim Tourism</title>
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="journey-detail.css" />
+</head>
+
+<body>
+
+<header class="header">
+    <a href="index.html" class="logo">SILKIM</a>
+
+  <div class="menu-toggle" id="menuToggle">☰</div>
+
+  <nav id="mainNav">
+    <a href="index.html">Home</a>
+    <a href="journeys.html">Journeys</a>
+    <a href="bhutan-detail.html">Bhutan Journey</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="journey-hero image-hero bhutan bumthang">
+    <div class="hero-overlay"></div>
+    <div class="container">
+      <h1 class="animate">Bumthang Spiritual Valley</h1>
+      <p class="animate">Ancient temples and sacred valleys at the heart of Bhutan.</p>
+    </div>
+  </section>
+
+  <!-- OVERVIEW -->
+  <section class="section overview">
+    <div class="container two-col">
+
+      <div class="meta animate">
+        <p><strong>Duration</strong><span>4 days</span></p>
+        <p><strong>Max Altitude</strong><span>3,400 m</span></p>
+        <p><strong>Season</strong><span>Mar–May · Sep–Nov</span></p>
+        <p><strong>Difficulty</strong><span>Moderate</span></p>
+      </div>
+
+      <div class="description animate">
+        <h2>Overview</h2>
+        <p>
+          Bumthang is considered the spiritual heartland of Bhutan, containing
+          some of the kingdom’s oldest temples and pilgrimage sites. The route
+          blends cultural immersion with gentle valley walks.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ITINERARY -->
+  <section class="section itinerary">
+    <div class="container">
+      <h2 class="animate">Basic Itinerary</h2>
+
+      <div class="itinerary-list">
+
+        <div class="itinerary-item animate">
+          <div class="day-label">Day 1</div>
+          <div class="day-content">
+            <h3>Arrival in Bumthang</h3>
+            <p>Explore Jakar town and nearby monasteries.</p>
+          </div>
+        </div>
+
+        <div class="itinerary-item animate">
+          <div class="day-label">Day 2</div>
+          <div class="day-content">
+            <h3>Sacred Temple Circuit</h3>
+            <p>Visit Jambay Lhakhang, Kurjey Lhakhang, and Tamshing Monastery.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section contact-cta">
+    <div class="container">
+      <h2 class="animate">Detailed Itinerary & Budget</h2>
+      <p class="animate">Can be extended with village stays and festival visits.</p>
+      <a href="contact.html" class="cta-button">Contact Us</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">© 2025 Silkim Tourism</footer>
+
+<!-- SAME ANIMATION SCRIPT -->
+<script>
+const observer = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        observer.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.15 }
+);
+
+document.querySelectorAll('.animate').forEach(el => {
+  observer.observe(el);
+});
+</script>
+<script>
+  const observer = new IntersectionObserver( ... );
+</script>
+<script>
+  const toggle = document.getElementById("menuToggle");
+  const nav = document.getElementById("mainNav");
+
+  toggle.addEventListener("click", () => {
+    nav.classList.toggle("active");
+  });
+</script>
+
+</body>
+</html>

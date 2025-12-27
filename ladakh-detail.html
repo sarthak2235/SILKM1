@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ladakh Traverse | Silkim Tourism</title>
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="journey-detail.css" />
+</head>
+
+<body>
+
+<header class="header">
+  <a href="index.html" class="logo">SILKIM</a>
+
+  <div class="menu-toggle" id="menuToggle">☰</div>
+
+  <nav id="mainNav">
+    <a href="index.html">Home</a>
+    <a href="journeys.html">Journeys</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+
+<main>
+
+  <!-- HERO -->
+  <section class="journey-hero image-hero ladakh">
+    <div class="hero-overlay"></div>
+    <div class="container">
+      <h1 class="animate">Ladakh Traverse</h1>
+      <p class="animate">High-altitude expeditions across remote Himalayan corridors.</p>
+    </div>
+  </section>
+
+  <!-- OVERVIEW -->
+  <section class="section overview">
+    <div class="container two-col">
+
+        <div class="meta animate">
+        <p><strong>Duration</strong><span>12 days</span></p>
+        <p><strong>Max Altitude</strong><span>5,200 m</span></p>
+        <p><strong>Season</strong><span>June – September</span></p>
+        <p><strong>Difficulty</strong><span>Challenging</span></p>
+      </div>
+
+        <div class="description animate">
+        <h2>Overview</h2>
+        <p>
+          This journey follows historic trade corridors and pastoral routes
+          across Ladakh’s high plateaus. Designed for gradual acclimatization,
+          it combines cultural immersion with physically demanding terrain.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SUB JOURNEYS -->
+  <section class="section sub-journeys">
+    <div class="container">
+      <h2>Routes Within This Journey</h2>
+
+      <div class="sub-grid">
+
+          <a href="ladakh-nubra.html" class="sub-card ladakh nubra animate">
+          <h3>Nubra–Pangong Circuit</h3>
+          <span>6 days · Lakes & high passes</span>
+        </a>
+
+        <a href="ladakh-hanle.html" class="sub-card ladakh hanle animate">
+          <h3>Hanle Plateau Extension</h3>
+          <span>4 days · Remote observatory region</span>
+        </a>
+
+        <a href="ladakh-zanskar.html" class="sub-card ladakh zanskar animate">
+          <h3>Zanskar Link Route</h3>
+          <span>7 days · Deep valley crossings</span>
+        </a>
+
+        <a href="ladakh-changthang.html" class="sub-card ladakh changthang animate">
+          <h3>Changthang Nomad Trail</h3>
+          <span>5 days · Pastoral landscapes</span>
+        </a>
+
+        <a href="ladakh-monastery.html" class="sub-card ladakh monastery animate">
+          <h3>Monastery & Trade Route</h3>
+          <span>3 days · Cultural focus</span>
+        </a>
+
+        <a href="ladakh-acclimatization.html" class="sub-card ladakh acclimatization animate">
+          <h3>High Pass Acclimatization Loop</h3>
+          <span>4 days · Altitude conditioning</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  © 2025 Silkim Tourism
+</footer>
+
+
+<script>
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+
+  document.querySelectorAll('.animate').forEach(el => {
+    observer.observe(el);
+  });
+</script>
+<script>
+  const observer = new IntersectionObserver( ... );
+</script>
+
+<script>
+  const toggle = document.getElementById("menuToggle");
+  const nav = document.getElementById("mainNav");
+
+  toggle.addEventListener("click", () => {
+    nav.classList.toggle("active");
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,262 @@
+/* =====================================================
+   PHILOSOPHY PAGE — COMPLETE STYLESHEET
+   Loaded AFTER styles.css
+   ===================================================== */
+
+
+/* =====================================================
+   HERO SECTION
+   Same structure as index.html, image overridden here
+   ===================================================== */
+
+.hero.philosophy-hero {
+  height: 100vh;
+  padding-top: 120px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.45),
+      rgba(0,0,0,0.85)
+    ),
+    url("images/philosophy.jpg");
+
+  background-size: cover;
+  background-position: center;
+}
+
+.hero.philosophy-hero h1 {
+  letter-spacing: 1.5px;
+}
+
+.hero.philosophy-hero p {
+  max-width: 520px;
+  margin: 0 auto;
+  color: var(--muted);
+}
+
+
+/* =====================================================
+   PHILOSOPHY CONTENT SECTION
+   ===================================================== */
+
+.philosophy-content {
+  padding: 180px 40px;
+
+  /* Soft vignette so text doesn’t float in emptiness */
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(255,255,255,0.03),
+      rgba(0,0,0,0.9)
+    );
+}
+
+
+/* =====================================================
+   READING PANEL (THE FIX)
+   ===================================================== */
+
+.container.narrow {
+  max-width: 640px;
+  margin: 0 auto;
+
+  padding: 80px 72px;
+
+  background: rgba(0,0,0,0.38);
+  backdrop-filter: blur(6px);
+
+  border-left: 2px solid rgba(207,167,90,0.45);
+}
+
+
+/* =====================================================
+   TYPOGRAPHY RHYTHM
+   ===================================================== */
+
+.philosophy-content p {
+  font-size: 1.05rem;
+  line-height: 1.9;
+  margin-bottom: 36px;
+  color: var(--fg);
+
+  /* Better line breaks for reflective text */
+  text-wrap: balance;
+}
+
+/* Opening paragraph — subtle emphasis */
+.philosophy-content p:first-child {
+  font-size: 1.1rem;
+}
+
+
+/* =====================================================
+   CLOSING STATEMENT
+   ===================================================== */
+
+.philosophy-content .closing {
+  margin-top: 80px;
+
+  text-align: left;
+  font-style: italic;
+  font-size: 1.15rem;
+
+  color: var(--accent);
+}
+
+
+/* =====================================================
+   RESPONSIVE REFINEMENTS
+   ===================================================== */
+
+@media (max-width: 900px) {
+  .philosophy-content {
+    padding: 140px 32px;
+  }
+
+  .container.narrow {
+    padding: 64px 48px;
+  }
+}
+
+@media (max-width: 600px) {
+  .philosophy-content {
+    padding: 120px 20px;
+  }
+
+  .container.narrow {
+    padding: 48px 28px;
+    border-left-width: 1px;
+  }
+
+  .hero.philosophy-hero h1 {
+    font-size: 2.2rem;
+  }
+}
+
+
+/* =====================================================
+   MOBILE REFINEMENTS (PHONES)
+   ===================================================== */
+
+@media (max-width: 768px) {
+
+  /* HERO */
+  .hero {
+    height: auto;
+    min-height: 70vh;
+    padding-top: 100px;
+    padding-bottom: 60px;
+  }
+
+  .hero h1 {
+    font-size: 2.1rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  /* CONTENT SECTIONS */
+  .philosophy-content,
+  .contact-section {
+    padding: 100px 20px;
+  }
+
+  /* READING PANELS */
+  .container.narrow,
+  .contact-panel {
+    max-width: 100%;
+    padding: 40px 24px;
+    border-left: none;
+    background: rgba(0,0,0,0.45);
+  }
+
+  /* PARAGRAPHS */
+  .philosophy-content p,
+  .contact-info p {
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+
+  /* CONTACT GRID */
+  .contact-panel {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  /* SOCIAL LINKS */
+  .contact-social {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* FORM */
+  .contact-form label {
+    font-size: 0.85rem;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 0.95rem;
+    padding: 10px 12px;
+  }
+
+  .contact-form button {
+    width: 100%;
+    padding: 14px 0;
+  }
+}
+
+
+/* =====================================================
+   MOBILE HEADER FIX
+   ===================================================== */
+
+.menu-toggle {
+  display: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+  color: var(--fg);
+}
+
+@media (max-width: 768px) {
+
+  .header {
+    padding: 16px 24px;
+  }
+
+  .header nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+
+    background: rgba(14, 20, 24, 0.98);
+    backdrop-filter: blur(10px);
+
+    display: none;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .header nav a {
+    margin: 0;
+    padding: 16px 0;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    font-size: 1rem;
+  }
+
+  .header nav.active {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}

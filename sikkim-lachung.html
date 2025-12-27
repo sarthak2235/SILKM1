@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lachung & Yumthang | Silkim Tourism</title>
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="journey-detail.css" />
+</head>
+
+<body>
+
+<header class="header">
+    <a href="index.html" class="logo">SILKIM</a>
+
+  <div class="menu-toggle" id="menuToggle">☰</div>
+
+  <nav id="mainNav">
+    <a href="index.html">Home</a>
+    <a href="journeys.html">Journeys</a>
+    <a href="sikkim-detail.html">Sikkim Journey</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main>
+
+<section class="journey-hero image-hero sikkim lachung">
+  <div class="hero-overlay"></div>
+  <div class="container">
+    <h1 class="animate">Lachung & Yumthang Valley</h1>
+    <p class="animate">Alpine valleys and seasonal flower meadows.</p>
+  </div>
+</section>
+
+<section class="section overview">
+  <div class="container two-col">
+
+    <div class="meta animate">
+      <p><strong>Duration</strong><span>3 days</span></p>
+      <p><strong>Max Altitude</strong><span>3,600 m</span></p>
+      <p><strong>Season</strong><span>Mar – Jun · Sep – Nov</span></p>
+      <p><strong>Difficulty</strong><span>Moderate</span></p>
+    </div>
+
+    <div class="description animate">
+      <h2>Overview</h2>
+      <p>
+        Lachung is the gateway to Yumthang Valley, known for alpine landscapes,
+        hot springs, and seasonal blooms.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="section itinerary">
+  <div class="container">
+    <h2 class="animate">Basic Itinerary</h2>
+
+    <div class="itinerary-item animate">
+      <div class="day-label">Day 1</div>
+      <div class="day-content">
+        <h3>Gangtok → Lachung</h3>
+        <p>Drive through North Sikkim river valleys.</p>
+      </div>
+    </div>
+
+    <div class="itinerary-item animate">
+      <div class="day-label">Day 2</div>
+      <div class="day-content">
+        <h3>Yumthang Valley</h3>
+        <p>Explore alpine meadows and hot springs.</p>
+      </div>
+    </div>
+
+    <div class="itinerary-item animate">
+      <div class="day-label">Day 3</div>
+      <div class="day-content">
+        <h3>Return to Gangtok</h3>
+        <p>Descend via scenic mountain roads.</p>
+      </div>
+    </div>
+
+  </section>
+
+<section class="section contact-cta">
+  <div class="container">
+    <h2 class="animate">Detailed Itinerary & Budget</h2>
+    <p class="animate">Seasonal road access applies.</p>
+    <a href="contact.html" class="cta-button">Contact Us</a>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">© 2025 Silkim Tourism</footer>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in-view');
+      observer.unobserve(e.target);
+    }
+  });
+},{ threshold: 0.15 });
+
+document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+</script>
+<script>
+  const observer = new IntersectionObserver( ... );
+</script>
+<script>
+  const toggle = document.getElementById("menuToggle");
+  const nav = document.getElementById("mainNav");
+
+  toggle.addEventListener("click", () => {
+    nav.classList.toggle("active");
+  });
+</script>
+</body>
+</html>

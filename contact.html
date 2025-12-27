@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Silkim</title>
+
+  <!-- GLOBAL STYLES -->
+  <link rel="stylesheet" href="styles.css" />
+  <!-- CONTACT PAGE STYLES -->
+  <link rel="stylesheet" href="contact.css" />
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="header">
+    <a href="index.html" class="logo">SILKIM</a>
+
+  <div class="menu-toggle" id="menuToggle">☰</div>
+
+  <nav id="mainNav">
+    <a href="index.html">Home</a>
+    <a href="journeys.html">Journeys</a>
+    <a href="philosophy.html">Philosophy</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+
+<main>
+
+  <!-- ================= HERO ================= -->
+  <section class="hero contact-hero">
+    <div class="hero-content reveal">
+      <h1>Let’s Plan Thoughtfully</h1>
+      <p>
+        Tell us where you want to go — and how you want to experience it.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT CONTENT ================= -->
+  <section class="contact-section">
+    <div class="container narrow contact-panel">
+
+      <!-- LEFT: INFO -->
+      <div class="contact-info reveal">
+        <h2>Begin the Conversation</h2>
+
+        <p>
+          Our journeys are shaped by season, altitude, and personal rhythm.
+          This form is not a booking engine — it’s the start of a dialogue.
+        </p>
+
+        <p>
+          Whether you’re drawn to Ladakh’s high silence, Sikkim’s forests,
+          or Bhutan’s living monasteries, write to us thoughtfully.
+        </p>
+
+        <p class="note">
+          We usually reply within 24–48 hours.
+        </p>
+
+        <!-- SOCIAL LINKS -->
+        <div class="contact-social">
+          <a href="https://www.facebook.com/sarthak.mohanty.868668/"
+             target="_blank" rel="noopener noreferrer">Facebook</a>
+
+          <a href="https://www.instagram.com/sarthakmohanty_1/"
+             target="_blank" rel="noopener noreferrer">Instagram</a>
+
+          <a href="https://www.linkedin.com/"
+             target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+      </div>
+
+      <!-- RIGHT: FORM -->
+      <form class="contact-form reveal"
+            action="https://formspree.io/f/meeqayrl"
+            method="POST">
+
+        <!-- Redirect after submit -->
+        <input type="hidden" name="_redirect" value="thank-you.html">
+        <!-- Spam trap -->
+        <input type="text" name="_gotcha" style="display:none">
+
+        <label>
+          Name
+          <input type="text" name="name" placeholder="Your name" required />
+        </label>
+
+        <label>
+          Email
+          <input type="email" name="email" placeholder="you@example.com" required />
+        </label>
+
+        <label>
+          Destination of Interest
+          <input type="text" name="destination"
+                 placeholder="Ladakh / Sikkim / Bhutan" />
+        </label>
+
+        <label>
+          Message
+          <textarea name="message" rows="5"
+                    placeholder="Tell us about your travel plans"></textarea>
+        </label>
+
+        <button type="submit">Send Message</button>
+      </form>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  © 2025 Silkim
+</footer>
+
+<!-- ================= ANIMATION ================= -->
+<script>
+  const reveals = document.querySelectorAll(".reveal");
+
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+
+  reveals.forEach(el => observer.observe(el));
+</script>
+<script>
+  const toggle = document.getElementById("menuToggle");
+  const nav = document.getElementById("mainNav");
+
+  toggle.addEventListener("click", () => {
+    nav.classList.toggle("active");
+  });
+</script>
+
+</body>
+</html>

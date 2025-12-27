@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rumtek Monastery Circuit | Silkim Tourism</title>
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="journey-detail.css" />
+</head>
+
+<body>
+
+<header class="header">
+    <a href="index.html" class="logo">SILKIM</a>
+
+  <div class="menu-toggle" id="menuToggle">☰</div>
+
+  <nav id="mainNav">
+    <a href="index.html">Home</a>
+    <a href="journeys.html">Journeys</a>
+    <a href="sikkim-detail.html">Sikkim Journey</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main>
+
+<section class="journey-hero image-hero sikkim rumtek">
+  <div class="hero-overlay"></div>
+  <div class="container">
+    <h1 class="animate">Rumtek Monastery Circuit</h1>
+    <p class="animate">Sacred sites and living Buddhist traditions.</p>
+  </div>
+</section>
+
+<section class="section overview">
+  <div class="container two-col">
+
+    <div class="meta animate">
+      <p><strong>Duration</strong><span>1 day</span></p>
+      <p><strong>Max Altitude</strong><span>2,200 m</span></p>
+      <p><strong>Season</strong><span>All year</span></p>
+      <p><strong>Difficulty</strong><span>Easy</span></p>
+    </div>
+
+    <div class="description animate">
+      <h2>Overview</h2>
+      <p>
+        Rumtek Monastery is the seat of the Karmapa lineage and a major center
+        of Tibetan Buddhism in Sikkim.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="section itinerary">
+  <div class="container">
+    <h2 class="animate">Basic Itinerary</h2>
+
+    <div class="itinerary-item animate">
+      <div class="day-label">Day 1</div>
+      <div class="day-content">
+        <h3>Gangtok → Rumtek → Gangtok</h3>
+        <p>Visit Rumtek Monastery and surrounding sites.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section contact-cta">
+  <div class="container">
+    <h2 class="animate">Detailed Itinerary & Budget</h2>
+    <p class="animate">Suitable for cultural day trips.</p>
+    <a href="contact.html" class="cta-button">Contact Us</a>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">© 2025 Silkim Tourism</footer>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in-view');
+      observer.unobserve(e.target);
+    }
+  });
+},{ threshold: 0.15 });
+
+document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+</script>
+<script>
+  const observer = new IntersectionObserver( ... );
+</script>
+<script>
+  const toggle = document.getElementById("menuToggle");
+  const nav = document.getElementById("mainNav");
+
+  toggle.addEventListener("click", () => {
+    nav.classList.toggle("active");
+  });
+</script>
+</body>
+</html>

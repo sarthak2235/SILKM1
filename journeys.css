@@ -1,0 +1,194 @@
+/* =======================
+   SHARED CONTAINER
+   ======================= */
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* =====================================================
+   JOURNEY HERO (TOP IMAGE)
+   ===================================================== */
+
+.hero.journey-hero {
+  height: 100vh;
+  padding-top: 120px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.45),
+      rgba(0,0,0,0.85)
+    ),
+    url("images/journey.jpg");
+
+  background-size: cover;
+  background-position: center;
+}
+
+.hero.journey-hero h1 {
+  letter-spacing: 1.5px;
+}
+
+.hero.journey-hero p {
+  max-width: 520px;
+  margin: 0 auto;
+  color: var(--muted);
+}
+
+/* =======================
+   JOURNEY SECTION
+   ======================= */
+
+.journey-section {
+  padding: 160px 0;
+}
+
+/* =======================
+   GRID
+   ======================= */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+}
+
+/* =======================
+   CARD
+   ======================= */
+
+.card {
+  position: relative;
+  aspect-ratio: 16 / 9;
+
+  padding: 32px 32px 28px;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.25);
+
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease;
+}
+
+/* =======================
+   CARD BACKGROUND IMAGE
+   ======================= */
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  opacity: 0.35;
+  z-index: 0;
+}
+
+.card.ladakh::before {
+  background-image: url("images/ladakh.jpg");
+}
+
+.card.sikkim::before {
+  background-image: url("images/sikkim.jpg");
+}
+
+.card.bhutan::before {
+  background-image: url("images/bhutan.jpg");
+}
+
+/* =======================
+   CARD TEXT
+   ======================= */
+
+.card h3,
+.card span {
+  position: relative;
+  z-index: 1;
+}
+
+.card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+}
+
+.card span {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* =======================
+   HOVER
+   ======================= */
+
+.card:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent);
+}
+
+/* =======================
+   LINK RESET
+   ======================= */
+
+.card-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+/* =======================
+   RESPONSIVE
+   ======================= */
+
+@media (max-width: 900px) {
+  .cards {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .hero.journey-hero h1 {
+    font-size: 2.4rem;
+  }
+}
+
+/* =====================================================
+   MOBILE REFINEMENTS
+   ===================================================== */
+
+@media (max-width: 768px) {
+
+  .hero {
+    height: auto;
+    min-height: 70vh;
+    padding-top: 100px;
+    padding-bottom: 60px;
+  }
+
+  .hero h1 {
+    font-size: 2.1rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .journey-section {
+    padding: 100px 20px;
+  }
+}

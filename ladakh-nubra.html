@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nubra–Pangong Circuit | Silkim Tourism</title>
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="journey-detail.css" />
+</head>
+
+<body>
+
+    <header class="header">
+        <a href="index.html" class="logo">SILKIM</a>
+
+      <div class="menu-toggle" id="menuToggle">☰</div>
+
+      <nav id="mainNav">
+        <a href="index.html">Home</a>
+        <a href="journeys.html">Journeys</a>
+        <a href="ladakh-detail.html">Ladakh Traverse</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
+
+<main>
+
+<section class="journey-hero image-hero ladakh nubra">
+  <div class="hero-overlay"></div>
+  <div class="container">
+    <h1 class="animate">Nubra–Pangong Circuit</h1>
+    <p class="animate">
+      High-altitude deserts, alpine lakes, and iconic Himalayan passes.
+    </p>
+  </div>
+</section>
+
+<section class="section overview">
+  <div class="container two-col">
+
+    <div class="meta animate">
+      <p><strong>Duration</strong><span>6 days</span></p>
+      <p><strong>Max Altitude</strong><span>5,350 m</span></p>
+      <p><strong>Season</strong><span>June – September</span></p>
+      <p><strong>Difficulty</strong><span>Moderate–High</span></p>
+    </div>
+
+    <div class="description animate">
+      <h2>Overview</h2>
+      <p>
+        This circuit links the Nubra Valley with Pangong Lake via some of
+        Ladakh’s most scenic high passes. The route contrasts sand dunes,
+        glacial rivers, and vast turquoise lakes, while allowing gradual
+        acclimatization through staged elevation gain.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="section itinerary">
+  <div class="container">
+    <h2 class="animate">Basic Itinerary</h2>
+
+    <div class="itinerary-list">
+
+      <div class="itinerary-item animate">
+        <div class="day-label">Day 1</div>
+        <div class="day-content">
+          <h3>Leh → Khardung La → Nubra Valley</h3>
+          <p>
+            Cross Khardung La and descend into the Nubra Valley. Evening rest
+            and short acclimatization walks.
+          </p>
+        </div>
+      </div>
+
+      <div class="itinerary-item animate">
+        <div class="day-label">Day 2</div>
+        <div class="day-content">
+          <h3>Nubra Valley Exploration</h3>
+          <p>
+            Visit monasteries, sand dunes, and river confluences. Slow-paced
+            exploration to aid acclimatization.
+          </p>
+        </div>
+      </div>
+
+      <div class="itinerary-item animate">
+        <div class="day-label">Day 3</div>
+        <div class="day-content">
+          <h3>Nubra → Shyok Route</h3>
+          <p>
+            Travel along the Shyok River corridor with changing desert and
+            mountain landscapes.
+          </p>
+        </div>
+      </div>
+
+      <div class="itinerary-item animate">
+        <div class="day-label">Day 4</div>
+        <div class="day-content">
+          <h3>Pangong Lake</h3>
+          <p>
+            Full day around Pangong Lake focusing on short walks and rest
+            near the lakeshore.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section contact-cta">
+  <div class="container">
+    <h2 class="animate">Detailed Itinerary & Budget</h2>
+    <p class="animate">
+      Route variations depend on road conditions and acclimatization.
+      Contact us for a customized day-wise plan.
+    </p>
+    <a href="contact.html" class="cta-button">Contact Us</a>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">© 2025 Silkim Tourism</footer>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in-view');
+      observer.unobserve(entry.target);
+    }
+  });
+},{ threshold: 0.15 });
+
+document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+</script>
+<script>
+  const observer = new IntersectionObserver( ... );
+</script>
+<script>
+  const toggle = document.getElementById("menuToggle");
+  const nav = document.getElementById("mainNav");
+
+  toggle.addEventListener("click", () => {
+    nav.classList.toggle("active");
+  });
+</script>
+</body>
+</html>

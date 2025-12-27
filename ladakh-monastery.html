@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Monastery & Trade Route | Silkim Tourism</title>
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="journey-detail.css" />
+</head>
+
+<body>
+
+    <header class="header">
+        <a href="index.html" class="logo">SILKIM</a>
+
+      <div class="menu-toggle" id="menuToggle">☰</div>
+
+      <nav id="mainNav">
+        <a href="index.html">Home</a>
+        <a href="journeys.html">Journeys</a>
+        <a href="ladakh-detail.html">Ladakh Traverse</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="journey-hero image-hero ladakh monastery">
+    <div class="hero-overlay"></div>
+    <div class="container">
+      <h1 class="animate">Monastery & Trade Route</h1>
+      <p class="animate">
+        Cultural corridors shaped by history and religion.
+      </p>
+    </div>
+  </section>
+
+  <!-- OVERVIEW -->
+  <section class="section overview">
+    <div class="container two-col">
+
+      <div class="meta animate">
+        <p><strong>Duration</strong><span>3 days</span></p>
+        <p><strong>Max Altitude</strong><span>4,200 m</span></p>
+        <p><strong>Season</strong><span>May – September</span></p>
+        <p><strong>Difficulty</strong><span>Easy–Moderate</span></p>
+      </div>
+
+      <div class="description animate">
+        <h2>Overview</h2>
+        <p>
+          This route focuses on monasteries, caravan paths, and villages that
+          formed Ladakh’s historic trade network.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ITINERARY -->
+  <section class="section itinerary">
+    <div class="container">
+      <h2 class="animate">Basic Itinerary</h2>
+
+      <div class="itinerary-list">
+        <div class="itinerary-item animate">
+          <div class="day-label">Day 1</div>
+          <div class="day-content">
+            <h3>Leh & Surrounding Monasteries</h3>
+            <p>
+              Visit key monasteries and cultural landmarks near Leh.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT CTA -->
+  <section class="section contact-cta">
+    <div class="container">
+      <h2 class="animate">Detailed Itinerary & Budget</h2>
+      <p class="animate">
+        Ideal for cultural travelers and short extensions.
+      </p>
+      <a href="contact.html" class="cta-button">Contact Us</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">© 2025 Silkim Tourism</footer>
+
+<!-- SAME ANIMATION SCRIPT -->
+<script>
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+
+  document.querySelectorAll('.animate').forEach(el => {
+    observer.observe(el);
+  });
+</script>
+<script>
+  const observer = new IntersectionObserver( ... );
+</script>
+<script>
+  const toggle = document.getElementById("menuToggle");
+  const nav = document.getElementById("mainNav");
+
+  toggle.addEventListener("click", () => {
+    nav.classList.toggle("active");
+  });
+</script>
+</body>
+</html>

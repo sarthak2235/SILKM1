@@ -1,0 +1,256 @@
+/* =====================================================
+   CONTACT PAGE — COMPLETE STYLESHEET
+   Loaded AFTER styles.css
+   ===================================================== */
+
+
+/* =====================================================
+   HERO (IMAGE AT TOP)
+   ===================================================== */
+
+.hero.contact-hero {
+  height: 80vh;
+  padding-top: 120px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.45),
+      rgba(0,0,0,0.85)
+    ),
+    url("images/contact.jpg");
+
+  background-size: cover;
+  background-position: center;
+}
+
+.hero.contact-hero h1 {
+  letter-spacing: 1.5px;
+}
+
+.hero.contact-hero p {
+  max-width: 520px;
+  margin: 0 auto;
+  color: var(--muted);
+}
+
+
+/* =====================================================
+   CONTACT SECTION
+   ===================================================== */
+
+.contact-section {
+  padding: 160px 40px;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(255,255,255,0.03),
+      rgba(0,0,0,0.9)
+    );
+}
+
+/* Shared narrow container */
+.container.narrow {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Panel */
+.contact-panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+
+  padding: 80px 72px;
+
+  background: rgba(0,0,0,0.38);
+  backdrop-filter: blur(6px);
+
+  border-left: 2px solid rgba(207,167,90,0.45);
+}
+
+
+/* =====================================================
+   CONTACT INFO
+   ===================================================== */
+
+.contact-info h2 {
+  margin-bottom: 24px;
+}
+
+.contact-info p {
+  color: var(--fg);
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+
+.contact-info .note {
+  margin-top: 32px;
+  font-size: 0.9rem;
+  color: var(--accent);
+}
+
+
+/* =====================================================
+   SOCIAL LINKS
+   ===================================================== */
+
+.contact-social {
+  margin-top: 40px;
+  display: flex;
+  gap: 24px;
+}
+
+.contact-social a {
+  font-size: 0.9rem;
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+.contact-social a:hover {
+  color: var(--accent);
+}
+
+
+/* =====================================================
+   FORM
+   ===================================================== */
+
+.contact-form label {
+  display: block;
+  margin-bottom: 22px;
+  font-size: 0.9rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  margin-top: 6px;
+  padding: 12px 14px;
+
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.25);
+  color: #fff;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.contact-form button {
+  margin-top: 16px;
+  padding: 14px 40px;
+
+  background: var(--accent);
+  border: none;
+  color: #000;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media (max-width: 900px) {
+  .contact-panel {
+    grid-template-columns: 1fr;
+    gap: 56px;
+    padding: 64px 48px;
+  }
+}
+
+@media (max-width: 600px) {
+  .contact-section {
+    padding: 120px 20px;
+  }
+
+  .contact-panel {
+    padding: 48px 28px;
+    border-left-width: 1px;
+  }
+}
+
+
+/* =====================================================
+   MOBILE REFINEMENTS (PHONES)
+   ===================================================== */
+
+@media (max-width: 768px) {
+
+  /* HERO */
+  .hero {
+    height: auto;
+    min-height: 70vh;
+    padding-top: 100px;
+    padding-bottom: 60px;
+  }
+
+  .hero h1 {
+    font-size: 2.1rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  /* CONTENT SECTIONS */
+  .philosophy-content,
+  .contact-section {
+    padding: 100px 20px;
+  }
+
+  /* READING PANELS */
+  .container.narrow,
+  .contact-panel {
+    max-width: 100%;
+    padding: 40px 24px;
+    border-left: none;
+    background: rgba(0,0,0,0.45);
+  }
+
+  /* PARAGRAPHS */
+  .philosophy-content p,
+  .contact-info p {
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+
+  /* CONTACT GRID */
+  .contact-panel {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  /* SOCIAL LINKS */
+  .contact-social {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* FORM */
+  .contact-form label {
+    font-size: 0.85rem;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 0.95rem;
+    padding: 10px 12px;
+  }
+
+  .contact-form button {
+    width: 100%;
+    padding: 14px 0;
+  }
+}

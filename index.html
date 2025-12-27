@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Silkim | Travel Beyond Roads</title>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="header">
+    <a href="index.html" class="logo">SILKIM</a>
+
+  <div class="menu-toggle" id="menuToggle">☰</div>
+
+  <nav id="mainNav">
+    <a href="index.html">Home</a>
+    <a href="journeys.html">Journeys</a>
+    <a href="philosophy.html">Philosophy</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="hero-content reveal">
+    <h1>Travel Beyond Roads</h1>
+    <p>
+      Curated expeditions shaped by geography, climate,
+      and the slow intelligence of place.
+    </p>
+    <a href="journeys.html" class="cta">Explore Journeys</a>
+  </div>
+</section>
+
+<!-- ================= WHY SILKIM ================= -->
+<section class="why">
+  <div class="why-inner reveal">
+    <h2>Why Silkim</h2>
+    <p>
+      We design journeys that respond to place rather than impose upon it.
+      Geography, history, and climate are not backdrops —
+      they are the framework through which every route is shaped.
+    </p>
+    <p>
+      Travel, for us, is not about speed or coverage.
+      It is about alignment — with terrain, seasons,
+      and the quiet logic that landscapes demand.
+    </p>
+  </div>
+</section>
+
+<!-- ================= PRINCIPLES ================= -->
+<section class="principles">
+
+  <div class="principle reveal">
+    <h3>Landscape First</h3>
+    <p>
+      Routes are determined by terrain, altitude, river systems,
+      and weather patterns — not convenience or checklists.
+      Every journey begins with the physical reality of the land.
+    </p>
+  </div>
+
+  <div class="principle reveal">
+    <h3>Slow by Design</h3>
+    <p>
+      Fewer places, longer stays.
+      We believe time is not something to optimise away,
+      but an essential ingredient that allows landscapes,
+      cultures, and people to reveal themselves.
+    </p>
+  </div>
+
+  <div class="principle reveal">
+    <h3>Seasonal Intelligence</h3>
+    <p>
+      Every itinerary is tuned to when a region truly opens —
+      climatically, ecologically, and culturally.
+      We travel with seasons, not against them.
+    </p>
+  </div>
+
+</section>
+
+<!-- ================= CLOSING CTA ================= -->
+<section class="closing reveal">
+  <p>
+    Silkim journeys are not designed to be consumed quickly.
+    They are designed to be remembered slowly.
+  </p>
+  <a href="journeys.html" class="cta">View Journeys</a>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  © 2025 Silkim
+</footer>
+
+<!-- ================= ANIMATION ================= -->
+<script>
+  const reveals = document.querySelectorAll(".reveal");
+
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+<script>
+  const toggle = document.getElementById("menuToggle");
+  const nav = document.getElementById("mainNav");
+
+  toggle.addEventListener("click", () => {
+    nav.classList.toggle("active");
+  });
+</script>
+
+</body>
+</html>
