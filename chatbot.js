@@ -10,10 +10,10 @@ document.addEventListener("DOMContentLoaded", () => {
     <div id="chatbot">
       <div id="chatHeader">Ask Silkim</div>
       <div id="chatMessages">
-        <p><strong>Silkim:</strong> Ask about destinations, seasons, difficulty, or preparation.</p>
+        <p><strong>Silkim:</strong> Hello. You can ask about journeys, seasons, difficulty, or preparation.</p>
       </div>
       <div id="chatSuggestions"></div>
-      <input id="chatInput" placeholder="Type your question and press Enter…" />
+      <input id="chatInput" placeholder="Type your message and press Enter…" />
     </div>
   `;
   document.body.insertAdjacentHTML("beforeend", chatbotHTML);
@@ -30,6 +30,27 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   /* =====================================================
+     SOCIAL / GENERAL RESPONSES
+     ===================================================== */
+
+  const greetings = ["hi", "hello", "hey", "good morning", "good evening"];
+
+  const smallTalk = {
+    "how are you": "I’m doing well, thank you. How are you?",
+    "how are you doing": "I’m doing well, thank you. How are you?",
+    "who are you":
+      "I’m Silkim’s travel assistant. I help you understand journeys, seasons, and preparation.",
+    "what do you do":
+      "I help with information about Silkim journeys — routes, seasons, difficulty, and preparation.",
+    "help":
+      "You can ask about destinations like Ladakh, Sikkim, or Bhutan, or about seasons, difficulty, and planning.",
+    "thank you":
+      "You’re welcome. Let me know if you’d like to explore a journey further.",
+    "thanks":
+      "You’re welcome. Feel free to ask anything else."
+  };
+
+  /* =====================================================
      KNOWLEDGE BASE
      ===================================================== */
 
@@ -40,13 +61,13 @@ document.addEventListener("DOMContentLoaded", () => {
       season:
         "The best seasons for Sikkim are March–June and September–November, offering stable weather and clear access.",
       difficulty:
-        "Sikkim routes are generally moderate, well-suited for first-time Himalayan travelers.",
+        "Sikkim routes are generally moderate and well-suited for first-time Himalayan travelers.",
       duration:
         "Sikkim journeys typically last 8–12 days, allowing cultural immersion and acclimatization.",
       overview:
         "Sikkim journeys emphasize monasteries, forest belts, and alpine valleys, paced slowly and thoughtfully.",
       convenience:
-        "Sikkim is one of the more convenient Himalayan journeys, with good road access and lower altitude stress."
+        "Sikkim is one of the most convenient Himalayan journeys, with good road access and lower altitude stress."
     },
 
     ladakh: {
@@ -55,13 +76,13 @@ document.addEventListener("DOMContentLoaded", () => {
       season:
         "Ladakh is accessible mainly from June to September, when high passes open.",
       difficulty:
-        "Ladakh is the most physically demanding due to sustained high altitude and exposure.",
+        "Ladakh is the most demanding due to sustained high altitude and exposure.",
       duration:
         "Ladakh journeys usually span 10–14 days to allow safe altitude adaptation.",
       overview:
         "Ladakh routes follow historic trade corridors across high plateaus and remote valleys.",
       convenience:
-        "Ladakh is less convenient due to altitude and remoteness, best suited for experienced or prepared travelers."
+        "Ladakh is less convenient due to altitude and remoteness, best for prepared travelers."
     },
 
     bhutan: {
@@ -70,32 +91,28 @@ document.addEventListener("DOMContentLoaded", () => {
       season:
         "The best seasons for Bhutan are March–May and September–November.",
       difficulty:
-        "Bhutan routes are moderate, focusing more on cultural depth than physical challenge.",
+        "Bhutan routes are moderate, focusing on cultural depth rather than physical challenge.",
       duration:
         "Bhutan journeys typically last 10–14 days for a slow, immersive experience.",
       overview:
         "Bhutan journeys focus on interior valleys, monasteries, and community-based travel.",
       convenience:
-        "Bhutan is logistically smooth but regulated, with structured travel and stable infrastructure."
+        "Bhutan is logistically smooth but regulated, with stable infrastructure."
     }
   };
 
-  /* =====================================================
-     COMPARATIVE & PRACTICAL KNOWLEDGE
-     ===================================================== */
-
   const comparisons = {
     difficulty:
-      "Among Silkim journeys, Ladakh is the most challenging due to sustained high altitude. Bhutan is moderate, while Sikkim is the most accessible and beginner-friendly.",
+      "Among the journeys, Ladakh is the most challenging due to altitude. Bhutan is moderate, while Sikkim is the most accessible.",
     convenience:
-      "Sikkim is generally the most convenient, followed by Bhutan. Ladakh requires the most preparation due to altitude and remoteness."
+      "Sikkim is generally the most convenient, followed by Bhutan. Ladakh requires the most preparation."
   };
 
   const packing = {
     youth:
-      "For youth journeys, essentials include layered clothing, sturdy walking shoes, a warm jacket, sunscreen, reusable water bottles, personal medication, and a small daypack. Physical fitness matters more than heavy gear.",
+      "For youth journeys, bring layered clothing, comfortable walking shoes, a warm jacket, sunscreen, personal medication, a reusable bottle, and a small daypack.",
     general:
-      "All journeys require layered clothing, sun protection, comfortable footwear, and a mindset prepared for slow travel."
+      "All journeys require layered clothing, sun protection, comfortable footwear, and readiness for slow travel."
   };
 
   /* =====================================================
@@ -110,7 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
     difficulty: ["difficulty", "hard", "easy", "challenging"],
     duration: ["duration", "days", "how long"],
     convenience: ["convenient", "easy to travel", "access"],
-    overview: ["journey", "route", "trip", "overview"],
+    overview: ["journey", "route", "trip"],
     compare: ["more difficult", "which is harder", "compare"],
     packing: ["bring", "pack", "carry"],
     youth: ["youth", "young", "students"]
@@ -126,7 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return topic;
       }
     }
-    return "overview";
+    return null;
   }
 
   function needsHuman(text) {
@@ -186,33 +203,49 @@ document.addEventListener("DOMContentLoaded", () => {
   input.addEventListener("keydown", e => {
     if (e.key !== "Enter" || input.value.trim() === "") return;
 
-    const userTextRaw = input.value.trim();
-    const userText = userTextRaw.toLowerCase();
+    const rawText = input.value.trim();
+    const text = rawText.toLowerCase();
     input.value = "";
     clearSuggestions();
 
     messages.innerHTML +=
-      `<p><strong>You:</strong> ${userTextRaw}</p>`;
+      `<p><strong>You:</strong> ${rawText}</p>`;
 
-    const destination = detectDestination(userText);
-    const topic = detectTopic(userText);
+    /* ---- Greetings ---- */
+    if (greetings.includes(text)) {
+      messages.innerHTML +=
+        `<p><strong>Silkim:</strong> Hello. How can I help you today?</p>`;
+      return;
+    }
 
-    /* ---- Comparative questions ---- */
-    if (topic === "compare" || userText.includes("more difficult")) {
+    /* ---- Small talk ---- */
+    for (const key in smallTalk) {
+      if (text.includes(key)) {
+        messages.innerHTML +=
+          `<p><strong>Silkim:</strong> ${smallTalk[key]}</p>`;
+        return;
+      }
+    }
+
+    /* ---- Comparisons ---- */
+    if (text.includes("more difficult") || text.includes("which is harder")) {
       messages.innerHTML +=
         `<p><strong>Silkim:</strong> ${comparisons.difficulty}</p>`;
       return;
     }
 
-    /* ---- Packing / youth questions ---- */
-    if (topic === "packing" || topic === "youth") {
+    /* ---- Packing / youth ---- */
+    if (text.includes("bring") || text.includes("pack") || text.includes("youth")) {
       messages.innerHTML +=
         `<p><strong>Silkim:</strong> ${packing.youth}</p>`;
       return;
     }
 
     /* ---- Destination-specific ---- */
-    if (destination && !needsHuman(userText)) {
+    const destination = detectDestination(text);
+    const topic = detectTopic(text);
+
+    if (destination && !needsHuman(text)) {
       const reply =
         knowledge[destination][topic] ||
         knowledge[destination].overview;
@@ -227,7 +260,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "https://wa.me/" +
         phone +
         "?text=" +
-        encodeURIComponent("Website inquiry: " + userTextRaw);
+        encodeURIComponent("Website inquiry: " + rawText);
 
       messages.innerHTML +=
         `<p><strong>Silkim:</strong> This needs a deeper conversation. I’ll connect you directly.</p>`;
