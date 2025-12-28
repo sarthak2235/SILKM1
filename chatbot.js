@@ -1,15 +1,13 @@
-// ================= CHATBOT =================
-
 document.addEventListener("DOMContentLoaded", () => {
 
-  // Inject chatbot HTML automatically
+  /* ========== Inject chatbot UI ========== */
   const chatbotHTML = `
     <div id="chatButton">💬</div>
 
     <div id="chatbot">
       <div id="chatHeader">Ask Silkim</div>
       <div id="chatMessages">
-        <p><strong>Silkim:</strong> Ask about journeys, seasons, or routes.</p>
+        <p><strong>Silkim:</strong> Ask about Bhutan, Ladakh, Sikkim, seasons, or journeys.</p>
       </div>
       <input id="chatInput" placeholder="Type your question and press Enter…" />
     </div>
@@ -18,69 +16,123 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const chatButton = document.getElementById("chatButton");
   const chatbot = document.getElementById("chatbot");
-  const chatInput = document.getElementById("chatInput");
-  const chatMessages = document.getElementById("chatMessages");
+  const input = document.getElementById("chatInput");
+  const messages = document.getElementById("chatMessages");
 
-  chatButton.addEventListener("click", () => {
+  chatButton.onclick = () => {
     chatbot.style.display =
       chatbot.style.display === "flex" ? "none" : "flex";
-  });
+  };
 
-  const basicAnswers = [
+  /* ========== KNOWLEDGE BASE ========== */
+
+  const knowledge = [
     {
-      keywords: ["price", "cost", "pricing"],
+      intent: "bhutan",
+      keywords: ["bhutan"],
       reply:
-        "Pricing depends on terrain, season, and duration. Every journey is custom-designed."
+        "Bhutan journeys are shaped by altitude, monsoon timing, and cultural calendars. Routes emphasize slow movement and seasonal clarity."
     },
     {
-      keywords: ["best time", "season", "when"],
+      intent: "ladakh",
+      keywords: ["ladakh"],
       reply:
-        "Each journey is seasonal. We travel when landscapes truly open."
+        "Ladakh demands respect for altitude and season. Journeys are designed around acclimatization, high passes, and short climatic windows."
     },
     {
-      keywords: ["where", "location", "region"],
+      intent: "sikkim",
+      keywords: ["sikkim"],
       reply:
-        "Our routes are shaped by altitude, rivers, and climate systems."
+        "Sikkim routes respond to forest belts, rainfall patterns, and Himalayan geography. Timing matters more than distance."
     },
     {
-      keywords: ["difficulty", "fitness"],
+      intent: "season",
+      keywords: ["season", "best time", "when"],
       reply:
-        "Difficulty varies by terrain and altitude, with slow acclimatization built in."
+        "Season is the primary design constraint. Each journey runs only when terrain, weather, and access align naturally."
+    },
+    {
+      intent: "journey",
+      keywords: ["journey", "trip", "expedition", "route"],
+      reply:
+        "Silkim journeys are terrain-led, not checklist-driven. Fewer places, longer stays, and routes shaped by geography."
+    },
+    {
+      intent: "difficulty",
+      keywords: ["difficulty", "fitness", "hard", "easy"],
+      reply:
+        "Difficulty varies by altitude and terrain. Journeys prioritize gradual pacing and acclimatization rather than endurance."
+    },
+    {
+      intent: "price",
+      keywords: ["price", "cost", "pricing", "budget"],
+      reply:
+        "Pricing depends on region, duration, season, and logistics. Every journey is custom-built rather than packaged."
     }
   ];
 
-  chatInput.addEventListener("keydown", e => {
-    if (e.key === "Enter" && chatInput.value.trim() !== "") {
-      const userText = chatInput.value;
-      chatInput.value = "";
+  /* ========== INTENT MATCHER ========== */
 
-      chatMessages.innerHTML +=
-        `<p><strong>You:</strong> ${userText}</p>`;
+  function findIntent(text) {
+    const lower = text.toLowerCase();
 
-      const match = basicAnswers.find(a =>
-        a.keywords.some(k => userText.toLowerCase().includes(k))
-      );
+    return knowledge.find(entry =>
+      entry.keywords.some(keyword => lower.includes(keyword))
+    );
+  }
 
-      if (match) {
-        chatMessages.innerHTML +=
-          `<p><strong>Silkim:</strong> ${match.reply}</p>`;
-      } else {
-        const phone = "917029066906"; // your WhatsApp number
-        const url =
-          "https://wa.me/" +
-          phone +
-          "?text=" +
-          encodeURIComponent("Website question: " + userText);
+  /* ========== ESCALATION HEURISTICS ========== */
 
-        chatMessages.innerHTML +=
-          `<p><strong>Silkim:</strong> This needs a deeper conversation. Connecting you directly.</p>`;
+  function needsHuman(text) {
+    const triggers = [
+      "custom",
+      "private",
+      "design",
+      "plan",
+      "combine",
+      "itinerary",
+      "family",
+      "medical",
+      "dates",
+      "permit",
+      "price for",
+      "quotation"
+    ];
 
-        window.open(url, "_blank");
-      }
+    return triggers.some(t => text.toLowerCase().includes(t));
+  }
 
-      chatMessages.scrollTop = chatMessages.scrollHeight;
+  /* ========== INPUT HANDLER ========== */
+
+  input.addEventListener("keydown", e => {
+    if (e.key !== "Enter" || input.value.trim() === "") return;
+
+    const userText = input.value.trim();
+    input.value = "";
+
+    messages.innerHTML +=
+      `<p><strong>You:</strong> ${userText}</p>`;
+
+    const intent = findIntent(userText);
+
+    if (intent && !needsHuman(userText)) {
+      messages.innerHTML +=
+        `<p><strong>Silkim:</strong> ${intent.reply}</p>`;
+    } else {
+      const phone = "917029066906"; // ← your WhatsApp number
+      const url =
+        "https://wa.me/" +
+        phone +
+        "?text=" +
+        encodeURIComponent("Website inquiry: " + userText);
+
+      messages.innerHTML +=
+        `<p><strong>Silkim:</strong> This needs a deeper conversation. I’ll connect you directly.</p>`;
+
+      window.open(url, "_blank");
     }
+
+    messages.scrollTop = messages.scrollHeight;
   });
 
 });
-
