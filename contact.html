@@ -15,7 +15,7 @@
 
 <!-- ================= HEADER ================= -->
 <header class="header">
-    <a href="index.html" class="logo">SILKIM</a>
+  <a href="index.html" class="logo">SILKIM</a>
 
   <div class="menu-toggle" id="menuToggle">☰</div>
 
@@ -26,7 +26,6 @@
     <a href="contact.html">Contact</a>
   </nav>
 </header>
-
 
 <main>
 
@@ -58,20 +57,35 @@
           or Bhutan’s living monasteries, write to us thoughtfully.
         </p>
 
+        <!-- PHONE DISPLAY -->
+        <p>
+          <strong>Phone:</strong> +91 7029066906
+        </p>
+
         <p class="note">
           We usually reply within 24–48 hours.
         </p>
 
-        <!-- SOCIAL LINKS -->
+        <!-- SOCIAL ICON LINKS -->
         <div class="contact-social">
-          <a href="https://www.facebook.com/sarthak.mohanty.868668/"
-             target="_blank" rel="noopener noreferrer">Facebook</a>
+          <a href="https://www.facebook.com/manita.sapkota.127"
+             target="_blank" rel="noopener noreferrer">
+            <img src="images/facebook.png" alt="Facebook">
+          </a>
 
-          <a href="https://www.instagram.com/sarthakmohanty_1/"
-             target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="https://www.instagram.com/manita_sapkota_/"
+             target="_blank" rel="noopener noreferrer">
+            <img src="images/instagram.png" alt="Instagram">
+          </a>
 
-          <a href="https://www.linkedin.com/"
-             target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="mailto:manitasapkota69@gmail.com">
+            <img src="images/gmail.png" alt="Gmail">
+          </a>
+
+          <a href="https://wa.me/+917029066906"
+             target="_blank" rel="noopener noreferrer">
+            <img src="images/whatsapp.png" alt="WhatsApp">
+          </a>
         </div>
       </div>
 
@@ -80,9 +94,7 @@
             action="https://formspree.io/f/meeqayrl"
             method="POST">
 
-        <!-- Redirect after submit -->
         <input type="hidden" name="_redirect" value="thank-you.html">
-        <!-- Spam trap -->
         <input type="text" name="_gotcha" style="display:none">
 
         <label>
@@ -93,6 +105,12 @@
         <label>
           Email
           <input type="email" name="email" placeholder="you@example.com" required />
+        </label>
+
+        <!-- PHONE INPUT -->
+        <label>
+          Phone Number
+          <input type="tel" name="phone" placeholder="+91 XXXXX XXXXX" required />
         </label>
 
         <label>
@@ -120,23 +138,19 @@
   © 2025 Silkim
 </footer>
 
-<!-- ================= ANIMATION ================= -->
+<!-- ================= SCRIPTS ================= -->
 <script>
   const reveals = document.querySelectorAll(".reveal");
-
-  const observer = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-        }
-      });
-    },
-    { threshold: 0.15 }
-  );
-
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      }
+    });
+  }, { threshold: 0.15 });
   reveals.forEach(el => observer.observe(el));
 </script>
+
 <script>
   const toggle = document.getElementById("menuToggle");
   const nav = document.getElementById("mainNav");

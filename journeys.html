@@ -5,15 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Journeys | Silkim</title>
 
-  <!-- GLOBAL STYLES -->
   <link rel="stylesheet" href="styles.css" />
-  <!-- JOURNEY PAGE STYLES -->
   <link rel="stylesheet" href="journeys.css" />
 </head>
 
 <body>
 
-<!-- ================= HEADER ================= -->
 <header class="header">
   <a href="index.html" class="logo">SILKIM</a>
 
@@ -29,82 +26,69 @@
 
 <main>
 
-  <!-- ================= HERO ================= -->
-  <section class="hero journey-hero">
-    <div class="hero-content reveal">
+  <!-- HERO -->
+  <section class="journeys-hero">
+    <div class="journeys-hero-content reveal">
       <h1>Journeys</h1>
       <p>
-        Landscapes shape the route. Time shapes the meaning.
+        Each route is limited, intentional,
+        and shaped by season, terrain, and time.
       </p>
     </div>
   </section>
 
-  <!-- ================= JOURNEY SECTION ================= -->
+  <!-- CARDS -->
   <section class="journey-section">
     <div class="container">
-
       <div class="cards">
 
-        <a href="#" class="card-link">
-          <div class="card ladakh reveal">
-            <h3>Ladakh</h3>
-            <span>High altitude silence</span>
-          </div>
+        <a href="ladakh-detail.html" class="card-link">
+          <article class="card ladakh reveal">
+            <h3>Ladakh Traverse</h3>
+            <span>12 days · High altitude</span>
+          </article>
         </a>
 
-        <a href="#" class="card-link">
-          <div class="card sikkim reveal">
-            <h3>Sikkim</h3>
-            <span>Forests, monasteries, mist</span>
-          </div>
+        <a href="sikkim-detail.html" class="card-link">
+          <article class="card sikkim reveal">
+            <h3>Sikkim Monastery Route</h3>
+            <span>8 days · Cultural</span>
+          </article>
         </a>
 
-        <a href="#" class="card-link">
-          <div class="card bhutan reveal">
-            <h3>Bhutan</h3>
-            <span>Measured happiness</span>
-          </div>
+        <a href="bhutan-detail.html" class="card-link">
+          <article class="card bhutan reveal">
+            <h3>Bhutan Interior</h3>
+            <span>10 days · Slow travel</span>
+          </article>
         </a>
 
       </div>
-
     </div>
   </section>
 
 </main>
 
-<!-- ================= FOOTER ================= -->
 <footer class="footer">
   © 2025 Silkim
 </footer>
 
-<!-- ================= REVEAL ANIMATION ================= -->
 <script>
   const reveals = document.querySelectorAll(".reveal");
-
-  const observer = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-        }
-      });
-    },
-    { threshold: 0.15 }
-  );
-
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add("visible");
+    });
+  }, { threshold: 0.15 });
   reveals.forEach(el => observer.observe(el));
 </script>
 
-<!-- ================= MOBILE NAV ================= -->
 <script>
-  const toggle = document.getElementById("menuToggle");
-  const nav = document.getElementById("mainNav");
-
-  toggle.addEventListener("click", () => {
-    nav.classList.toggle("active");
-  });
+  document.getElementById("menuToggle")
+    .addEventListener("click", () =>
+      document.getElementById("mainNav").classList.toggle("active")
+    );
 </script>
-
+<script src="chatbot.js"></script>
 </body>
 </html>

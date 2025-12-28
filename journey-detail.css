@@ -132,11 +132,11 @@
 }
 
 .sub-card.ladakh.hanle::before {
-  background-image: url("images/sikkim.jpg");
+  background-image: url("images/ladakh.jpg");
 }
 
 .sub-card.ladakh.zanskar::before {
-  background-image: url("images/bhutan.jpg");
+  background-image: url("images/ladakh.jpg");
 }
 
 .sub-card.ladakh.changthang::before {

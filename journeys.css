@@ -1,20 +1,14 @@
-/* =======================
-   SHARED CONTAINER
-   ======================= */
-
+/* CONTAINER */
 .container {
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 40px;
 }
 
-/* =====================================================
-   JOURNEY HERO (TOP IMAGE)
-   ===================================================== */
-
-.hero.journey-hero {
-  height: 100vh;
-  padding-top: 120px;
+/* HERO */
+.journeys-hero {
+  height: 55vh;
+  padding-top: 100px;
 
   display: flex;
   align-items: center;
@@ -33,61 +27,44 @@
   background-position: center;
 }
 
-.hero.journey-hero h1 {
-  letter-spacing: 1.5px;
+.journeys-hero h1 {
+  font-size: clamp(2.6rem, 4.5vw, 3.8rem);
+  margin-bottom: 16px;
 }
 
-.hero.journey-hero p {
-  max-width: 520px;
-  margin: 0 auto;
+.journeys-hero p {
   color: var(--muted);
+  font-size: 1rem;
 }
 
-/* =======================
-   JOURNEY SECTION
-   ======================= */
-
+/* SECTION */
 .journey-section {
-  padding: 160px 0;
+  padding: 80px 0 160px;
+  background: var(--bg); /* RESTORED */
 }
 
-/* =======================
-   GRID
-   ======================= */
-
+/* GRID */
 .cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 48px;
 }
 
-/* =======================
-   CARD
-   ======================= */
-
+/* CARD */
 .card {
   position: relative;
   aspect-ratio: 16 / 9;
-
-  padding: 32px 32px 28px;
-  overflow: hidden;
+  padding: 32px;
 
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
 
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(0, 0, 0, 0.25);
-
-  transition:
-    transform 0.35s ease,
-    border-color 0.35s ease;
+  border: 1px solid rgba(255,255,255,0.08);
+  overflow: hidden;
 }
 
-/* =======================
-   CARD BACKGROUND IMAGE
-   ======================= */
-
+/* CARD IMAGE */
 .card::before {
   content: "";
   position: absolute;
@@ -97,7 +74,7 @@
   background-position: center;
   background-repeat: no-repeat;
 
-  opacity: 0.35;
+  opacity: 0.55;                 /* IMPORTANT */
   z-index: 0;
 }
 
@@ -113,82 +90,44 @@
   background-image: url("images/bhutan.jpg");
 }
 
-/* =======================
-   CARD TEXT
-   ======================= */
-
+/* CARD TEXT */
 .card h3,
 .card span {
   position: relative;
   z-index: 1;
+  color: #fff;                   /* RESTORED */
 }
 
 .card h3 {
   font-size: 1.4rem;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .card span {
-  color: var(--muted);
   font-size: 0.95rem;
+  opacity: 0.85;
 }
 
-/* =======================
-   HOVER
-   ======================= */
-
-.card:hover {
-  transform: translateY(-8px);
-  border-color: var(--accent);
-}
-
-/* =======================
-   LINK RESET
-   ======================= */
-
+/* LINK RESET */
 .card-link {
-  display: block;
   color: inherit;
   text-decoration: none;
 }
 
-/* =======================
-   RESPONSIVE
-   ======================= */
+/* HOVER */
+.card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent);
+  transition: all 0.3s ease;
+}
 
+/* RESPONSIVE */
 @media (max-width: 900px) {
   .cards {
     grid-template-columns: 1fr;
-    gap: 32px;
   }
 
-  .hero.journey-hero h1 {
-    font-size: 2.4rem;
-  }
-}
-
-/* =====================================================
-   MOBILE REFINEMENTS
-   ===================================================== */
-
-@media (max-width: 768px) {
-
-  .hero {
-    height: auto;
-    min-height: 70vh;
-    padding-top: 100px;
-    padding-bottom: 60px;
-  }
-
-  .hero h1 {
-    font-size: 2.1rem;
-  }
-
-  .hero p {
-    font-size: 1rem;
-  }
-
-  .journey-section {
-    padding: 100px 20px;
+  .journeys-hero {
+    height: 60vh;
   }
 }
