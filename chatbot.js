@@ -222,7 +222,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       renderSuggestions(getSuggestions(destination));
     } else {
-      const phone = "91XXXXXXXXXX"; // replace with your WhatsApp number
+      const phone = "917029066906"; // replace with your WhatsApp number
       const url =
         "https://wa.me/" +
         phone +
