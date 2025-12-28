@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     <div id="chatbot">
       <div id="chatHeader">Ask Silkim</div>
       <div id="chatMessages">
-        <p><strong>Silkim:</strong> Hello. You can ask about journeys, seasons, difficulty, or preparation.</p>
+        <p><strong>Silkim:</strong> Hello. How can I help you today?</p>
       </div>
       <div id="chatSuggestions"></div>
       <input id="chatInput" placeholder="Type your message and press Enter…" />
@@ -30,25 +30,27 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   /* =====================================================
-     SOCIAL / GENERAL RESPONSES
+     SOCIAL LAYER
      ===================================================== */
 
   const greetings = ["hi", "hello", "hey", "good morning", "good evening"];
 
-  const smallTalk = {
-    "how are you": "I’m doing well, thank you. How are you?",
-    "how are you doing": "I’m doing well, thank you. How are you?",
-    "who are you":
-      "I’m Silkim’s travel assistant. I help you understand journeys, seasons, and preparation.",
-    "what do you do":
-      "I help with information about Silkim journeys — routes, seasons, difficulty, and preparation.",
-    "help":
-      "You can ask about destinations like Ladakh, Sikkim, or Bhutan, or about seasons, difficulty, and planning.",
-    "thank you":
-      "You’re welcome. Let me know if you’d like to explore a journey further.",
-    "thanks":
-      "You’re welcome. Feel free to ask anything else."
-  };
+  const statusQuestions = [
+    "how are you",
+    "how are you doing",
+    "how r u"
+  ];
+
+  const positiveStatusReplies = [
+    "i am fine",
+    "i am good",
+    "i'm fine",
+    "i'm good",
+    "doing well",
+    "all good",
+    "fine",
+    "good"
+  ];
 
   /* =====================================================
      KNOWLEDGE BASE
@@ -59,64 +61,50 @@ document.addEventListener("DOMContentLoaded", () => {
       altitude:
         "Sikkim journeys range from about 1,200 m to 4,200 m, with gradual ascents through forested and alpine terrain.",
       season:
-        "The best seasons for Sikkim are March–June and September–November, offering stable weather and clear access.",
+        "The best seasons for Sikkim are March–June and September–November.",
       difficulty:
         "Sikkim routes are generally moderate and well-suited for first-time Himalayan travelers.",
       duration:
-        "Sikkim journeys typically last 8–12 days, allowing cultural immersion and acclimatization.",
+        "Sikkim journeys typically last 8–12 days.",
       overview:
-        "Sikkim journeys emphasize monasteries, forest belts, and alpine valleys, paced slowly and thoughtfully.",
+        "Sikkim journeys emphasize monasteries, forest belts, and alpine valleys.",
       convenience:
-        "Sikkim is one of the most convenient Himalayan journeys, with good road access and lower altitude stress."
+        "Sikkim is one of the most convenient Himalayan journeys."
     },
 
     ladakh: {
       altitude:
-        "Ladakh journeys operate between 3,200 m and 5,200 m, requiring careful acclimatization.",
+        "Ladakh journeys operate between 3,200 m and 5,200 m.",
       season:
-        "Ladakh is accessible mainly from June to September, when high passes open.",
+        "Ladakh is accessible mainly from June to September.",
       difficulty:
-        "Ladakh is the most demanding due to sustained high altitude and exposure.",
+        "Ladakh is the most demanding due to sustained high altitude.",
       duration:
-        "Ladakh journeys usually span 10–14 days to allow safe altitude adaptation.",
+        "Ladakh journeys usually span 10–14 days.",
       overview:
-        "Ladakh routes follow historic trade corridors across high plateaus and remote valleys.",
+        "Ladakh routes follow historic trade corridors.",
       convenience:
-        "Ladakh is less convenient due to altitude and remoteness, best for prepared travelers."
+        "Ladakh requires the most preparation."
     },
 
     bhutan: {
       altitude:
-        "Bhutan journeys range from river valleys to passes around 4,500 m, with gentle elevation gain.",
+        "Bhutan journeys range from river valleys to passes around 4,500 m.",
       season:
         "The best seasons for Bhutan are March–May and September–November.",
       difficulty:
-        "Bhutan routes are moderate, focusing on cultural depth rather than physical challenge.",
+        "Bhutan routes are moderate and culturally focused.",
       duration:
-        "Bhutan journeys typically last 10–14 days for a slow, immersive experience.",
+        "Bhutan journeys typically last 10–14 days.",
       overview:
-        "Bhutan journeys focus on interior valleys, monasteries, and community-based travel.",
+        "Bhutan journeys focus on interior valleys and monasteries.",
       convenience:
-        "Bhutan is logistically smooth but regulated, with stable infrastructure."
+        "Bhutan is logistically smooth but regulated."
     }
   };
 
-  const comparisons = {
-    difficulty:
-      "Among the journeys, Ladakh is the most challenging due to altitude. Bhutan is moderate, while Sikkim is the most accessible.",
-    convenience:
-      "Sikkim is generally the most convenient, followed by Bhutan. Ladakh requires the most preparation."
-  };
-
-  const packing = {
-    youth:
-      "For youth journeys, bring layered clothing, comfortable walking shoes, a warm jacket, sunscreen, personal medication, a reusable bottle, and a small daypack.",
-    general:
-      "All journeys require layered clothing, sun protection, comfortable footwear, and readiness for slow travel."
-  };
-
   /* =====================================================
-     DETECTION LOGIC
+     DETECTION HELPERS
      ===================================================== */
 
   const destinations = ["sikkim", "ladakh", "bhutan"];
@@ -124,13 +112,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const topics = {
     altitude: ["altitude", "height", "elevation"],
     season: ["season", "best time", "when"],
-    difficulty: ["difficulty", "hard", "easy", "challenging"],
+    difficulty: ["difficulty", "hard", "easy"],
     duration: ["duration", "days", "how long"],
-    convenience: ["convenient", "easy to travel", "access"],
-    overview: ["journey", "route", "trip"],
-    compare: ["more difficult", "which is harder", "compare"],
-    packing: ["bring", "pack", "carry"],
-    youth: ["youth", "young", "students"]
+    convenience: ["convenient", "easy"],
+    overview: ["journey", "route", "trip"]
   };
 
   function detectDestination(text) {
@@ -143,37 +128,12 @@ document.addEventListener("DOMContentLoaded", () => {
         return topic;
       }
     }
-    return null;
-  }
-
-  function needsHuman(text) {
-    const triggers = [
-      "custom",
-      "itinerary",
-      "design",
-      "private",
-      "family",
-      "dates",
-      "permit",
-      "medical",
-      "price"
-    ];
-    return triggers.some(t => text.includes(t));
+    return "overview";
   }
 
   /* =====================================================
      SUGGESTIONS
      ===================================================== */
-
-  function getSuggestions(destination) {
-    return [
-      `Best season for ${capitalize(destination)}?`,
-      `Altitude levels in ${capitalize(destination)} journey?`,
-      `Difficulty of ${capitalize(destination)} route?`,
-      `How many days are ideal for ${capitalize(destination)}?`,
-      `Is ${capitalize(destination)} convenient for first-timers?`
-    ];
-  }
 
   function renderSuggestions(list) {
     suggestionsBox.innerHTML = "";
@@ -192,10 +152,6 @@ document.addEventListener("DOMContentLoaded", () => {
     suggestionsBox.innerHTML = "";
   }
 
-  function capitalize(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-  }
-
   /* =====================================================
      INPUT HANDLER
      ===================================================== */
@@ -208,67 +164,64 @@ document.addEventListener("DOMContentLoaded", () => {
     input.value = "";
     clearSuggestions();
 
-    messages.innerHTML +=
-      `<p><strong>You:</strong> ${rawText}</p>`;
+    messages.innerHTML += `<p><strong>You:</strong> ${rawText}</p>`;
 
     /* ---- Greetings ---- */
     if (greetings.includes(text)) {
       messages.innerHTML +=
-        `<p><strong>Silkim:</strong> Hello. How can I help you today?</p>`;
+        `<p><strong>Silkim:</strong> Hello. What would you like to know?</p>`;
       return;
     }
 
-    /* ---- Small talk ---- */
-    for (const key in smallTalk) {
-      if (text.includes(key)) {
-        messages.innerHTML +=
-          `<p><strong>Silkim:</strong> ${smallTalk[key]}</p>`;
-        return;
-      }
-    }
-
-    /* ---- Comparisons ---- */
-    if (text.includes("more difficult") || text.includes("which is harder")) {
+    /* ---- Status question ---- */
+    if (statusQuestions.some(q => text.includes(q))) {
       messages.innerHTML +=
-        `<p><strong>Silkim:</strong> ${comparisons.difficulty}</p>`;
+        `<p><strong>Silkim:</strong> I’m doing well, thank you. How about you?</p>`;
       return;
     }
 
-    /* ---- Packing / youth ---- */
-    if (text.includes("bring") || text.includes("pack") || text.includes("youth")) {
+    /* ---- Status reply (THIS IS THE FIX) ---- */
+    if (positiveStatusReplies.some(r => text.includes(r))) {
       messages.innerHTML +=
-        `<p><strong>Silkim:</strong> ${packing.youth}</p>`;
+        `<p><strong>Silkim:</strong> Glad to hear that. What would you like to know about our journeys?</p>`;
+
+      renderSuggestions([
+        "Best season for Ladakh?",
+        "Is Sikkim suitable for first-time travelers?",
+        "Which journey is more difficult?",
+        "What should I bring for the journey?"
+      ]);
       return;
     }
 
-    /* ---- Destination-specific ---- */
+    /* ---- Destination logic ---- */
     const destination = detectDestination(text);
     const topic = detectTopic(text);
 
-    if (destination && !needsHuman(text)) {
-      const reply =
-        knowledge[destination][topic] ||
-        knowledge[destination].overview;
-
+    if (destination) {
       messages.innerHTML +=
-        `<p><strong>Silkim:</strong> ${reply}</p>`;
+        `<p><strong>Silkim:</strong> ${knowledge[destination][topic]}</p>`;
 
-      renderSuggestions(getSuggestions(destination));
-    } else {
-      const phone = "917029066906"; // replace with your WhatsApp number
-      const url =
-        "https://wa.me/" +
-        phone +
-        "?text=" +
-        encodeURIComponent("Website inquiry: " + rawText);
-
-      messages.innerHTML +=
-        `<p><strong>Silkim:</strong> This needs a deeper conversation. I’ll connect you directly.</p>`;
-
-      window.open(url, "_blank");
+      renderSuggestions([
+        `Best season for ${destination}?`,
+        `Difficulty of ${destination} journey?`,
+        `How many days are ideal for ${destination}?`
+      ]);
+      return;
     }
 
-    messages.scrollTop = messages.scrollHeight;
+    /* ---- Fallback: WhatsApp ---- */
+    const phone = "917029066906"; // replace with your WhatsApp number
+    const url =
+      "https://wa.me/" +
+      phone +
+      "?text=" +
+      encodeURIComponent("Website inquiry: " + rawText);
+
+    messages.innerHTML +=
+      `<p><strong>Silkim:</strong> This needs a deeper conversation. I’ll connect you directly.</p>`;
+
+    window.open(url, "_blank");
   });
 
 });
