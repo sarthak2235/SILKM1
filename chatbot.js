@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* ========== Inject chatbot UI ========== */
+  /* =====================================================
+     CHATBOT UI INJECTION
+     ===================================================== */
+
   const chatbotHTML = `
     <div id="chatButton">💬</div>
 
@@ -9,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
       <div id="chatMessages">
         <p><strong>Silkim:</strong> Ask about Bhutan, Ladakh, Sikkim, seasons, or journeys.</p>
       </div>
+      <div id="chatSuggestions"></div>
       <input id="chatInput" placeholder="Type your question and press Enter…" />
     </div>
   `;
@@ -18,108 +22,161 @@ document.addEventListener("DOMContentLoaded", () => {
   const chatbot = document.getElementById("chatbot");
   const input = document.getElementById("chatInput");
   const messages = document.getElementById("chatMessages");
+  const suggestionsBox = document.getElementById("chatSuggestions");
 
   chatButton.onclick = () => {
     chatbot.style.display =
       chatbot.style.display === "flex" ? "none" : "flex";
   };
 
-  /* ========== KNOWLEDGE BASE ========== */
+  /* =====================================================
+     KNOWLEDGE BASE (STATIC INTELLIGENCE)
+     ===================================================== */
 
   const knowledge = [
     {
-      intent: "bhutan",
+      tag: "bhutan",
       keywords: ["bhutan"],
-      reply:
-        "Bhutan journeys are shaped by altitude, monsoon timing, and cultural calendars. Routes emphasize slow movement and seasonal clarity."
+      answer:
+        "Bhutan journeys focus on interior valleys, monasteries, and slow elevation gain. Routes are shaped by cultural calendars and seasonal clarity.",
+      suggestions: [
+        "Best season for Bhutan travel?",
+        "Difficulty level of Bhutan Interior journey?",
+        "How many days are ideal for Bhutan?"
+      ]
     },
     {
-      intent: "ladakh",
+      tag: "ladakh",
       keywords: ["ladakh"],
-      reply:
-        "Ladakh demands respect for altitude and season. Journeys are designed around acclimatization, high passes, and short climatic windows."
+      answer:
+        "Ladakh journeys traverse high plateaus and historic trade corridors. Acclimatization and seasonality are critical design factors.",
+      suggestions: [
+        "Best time to travel to Ladakh?",
+        "How difficult is Ladakh Traverse?",
+        "Is acclimatization included?"
+      ]
     },
     {
-      intent: "sikkim",
+      tag: "sikkim",
       keywords: ["sikkim"],
-      reply:
-        "Sikkim routes respond to forest belts, rainfall patterns, and Himalayan geography. Timing matters more than distance."
+      answer:
+        "Sikkim routes emphasize monasteries, forest belts, and alpine valleys. Journeys are paced slowly to match terrain and climate.",
+      suggestions: [
+        "Best season for Sikkim?",
+        "Cultural highlights of Sikkim route?",
+        "Altitude levels in Sikkim journey?"
+      ]
     },
     {
-      intent: "season",
+      tag: "season",
       keywords: ["season", "best time", "when"],
-      reply:
-        "Season is the primary design constraint. Each journey runs only when terrain, weather, and access align naturally."
+      answer:
+        "Season determines access, weather stability, and safety. Each Silkim journey operates only within narrow seasonal windows.",
+      suggestions: [
+        "Best season for Ladakh?",
+        "When is Bhutan accessible?",
+        "Monsoon impact on journeys?"
+      ]
     },
     {
-      intent: "journey",
-      keywords: ["journey", "trip", "expedition", "route"],
-      reply:
-        "Silkim journeys are terrain-led, not checklist-driven. Fewer places, longer stays, and routes shaped by geography."
-    },
-    {
-      intent: "difficulty",
+      tag: "difficulty",
       keywords: ["difficulty", "fitness", "hard", "easy"],
-      reply:
-        "Difficulty varies by altitude and terrain. Journeys prioritize gradual pacing and acclimatization rather than endurance."
+      answer:
+        "Difficulty depends on altitude, terrain, and remoteness. Journeys prioritize gradual pacing over physical intensity.",
+      suggestions: [
+        "Is Ladakh suitable for beginners?",
+        "Fitness needed for Bhutan?",
+        "How acclimatization works?"
+      ]
     },
     {
-      intent: "price",
-      keywords: ["price", "cost", "pricing", "budget"],
-      reply:
-        "Pricing depends on region, duration, season, and logistics. Every journey is custom-built rather than packaged."
+      tag: "journey",
+      keywords: ["journey", "trip", "route", "expedition"],
+      answer:
+        "Silkim journeys are terrain-led, not checklist-driven. Routes respond to geography, seasons, and time rather than speed.",
+      suggestions: [
+        "How journeys are designed?",
+        "Custom journeys possible?",
+        "Difference between routes?"
+      ]
+    },
+    {
+      tag: "price",
+      keywords: ["price", "cost", "budget", "pricing"],
+      answer:
+        "Pricing varies by region, duration, season, and logistics. Each journey is custom-designed rather than packaged.",
+      suggestions: [
+        "What affects journey cost?",
+        "Group vs private pricing?",
+        "Inclusions in pricing?"
+      ]
     }
   ];
 
-  /* ========== INTENT MATCHER ========== */
+  /* =====================================================
+     HELPERS
+     ===================================================== */
 
-  function findIntent(text) {
+  function matchIntent(text) {
     const lower = text.toLowerCase();
-
-    return knowledge.find(entry =>
-      entry.keywords.some(keyword => lower.includes(keyword))
+    return knowledge.find(k =>
+      k.keywords.some(word => lower.includes(word))
     );
   }
 
-  /* ========== ESCALATION HEURISTICS ========== */
+  function renderSuggestions(list) {
+    suggestionsBox.innerHTML = "";
+    list.forEach(q => {
+      const btn = document.createElement("button");
+      btn.textContent = q;
+      btn.onclick = () => {
+        input.value = q;
+        input.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter" }));
+      };
+      suggestionsBox.appendChild(btn);
+    });
+  }
+
+  function clearSuggestions() {
+    suggestionsBox.innerHTML = "";
+  }
 
   function needsHuman(text) {
     const triggers = [
       "custom",
-      "private",
       "design",
-      "plan",
-      "combine",
       "itinerary",
-      "family",
-      "medical",
       "dates",
+      "family",
+      "private",
       "permit",
-      "price for",
-      "quotation"
+      "medical"
     ];
-
     return triggers.some(t => text.toLowerCase().includes(t));
   }
 
-  /* ========== INPUT HANDLER ========== */
+  /* =====================================================
+     INPUT HANDLER
+     ===================================================== */
 
   input.addEventListener("keydown", e => {
     if (e.key !== "Enter" || input.value.trim() === "") return;
 
     const userText = input.value.trim();
     input.value = "";
+    clearSuggestions();
 
     messages.innerHTML +=
       `<p><strong>You:</strong> ${userText}</p>`;
 
-    const intent = findIntent(userText);
+    const intent = matchIntent(userText);
 
     if (intent && !needsHuman(userText)) {
       messages.innerHTML +=
-        `<p><strong>Silkim:</strong> ${intent.reply}</p>`;
+        `<p><strong>Silkim:</strong> ${intent.answer}</p>`;
+      renderSuggestions(intent.suggestions);
     } else {
-      const phone = "917029066906"; // ← your WhatsApp number
+      const phone = "91XXXXXXXXXX"; // replace with your WhatsApp number
       const url =
         "https://wa.me/" +
         phone +
@@ -127,7 +184,7 @@ document.addEventListener("DOMContentLoaded", () => {
         encodeURIComponent("Website inquiry: " + userText);
 
       messages.innerHTML +=
-        `<p><strong>Silkim:</strong> This needs a deeper conversation. I’ll connect you directly.</p>`;
+        `<p><strong>Silkim:</strong> This requires a deeper conversation. I’ll connect you directly.</p>`;
 
       window.open(url, "_blank");
     }
